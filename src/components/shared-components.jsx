@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo, useCallback } from 'react';
 import { Star, Server, CheckCircle, Cpu, CirclePower, HardDrive, Network, Globe, Database, Mail } from 'lucide-react';
 
-export const StatCard = ({ icon: Icon, label, value }) => (
+export const StatCard = memo(({ icon: Icon, label, value }) => (
   <div className="bg-gray-800/50 p-3 sm:p-4 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
     <div className="flex items-center text-blue-400 mb-1.5 sm:mb-2">
       <Icon size={16} sm:size={18} className="mr-2" />
@@ -9,16 +9,16 @@ export const StatCard = ({ icon: Icon, label, value }) => (
     </div>
     <div className="text-white font-bold text-sm sm:text-base">{value}</div>
   </div>
-);
+));
 
-export const SpecItem = ({ icon: Icon, spec }) => (
+export const SpecItem = memo(({ icon: Icon, spec }) => (
   <div className="text-gray-300 flex items-center py-1.5 text-sm sm:text-base">
     <Icon size={14} sm:size={16} className="text-blue-400 mr-2 flex-shrink-0" />
     {spec}
   </div>
-);
+));
 
-export const BackToTop = () => {
+export const BackToTop = memo(() => {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
@@ -30,9 +30,9 @@ export const BackToTop = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
   return showBackToTop ? (
     <button
@@ -46,9 +46,9 @@ export const BackToTop = () => {
       </svg>
     </button>
   ) : null;
-};
+});
 
-export const PlanCard = ({ plan, type }) => (
+export const PlanCard = memo(({ plan, type }) => (
   <div className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
     <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-4">
@@ -95,11 +95,14 @@ export const PlanCard = ({ plan, type }) => (
             <span className="text-gray-400 text-xs sm:text-sm font-normal">/month</span>
           </div>
         </div>
-        <button type="button" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 font-medium flex items-center text-sm sm:text-base">
+        <button
+          type="button"
+          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 font-medium flex items-center text-sm sm:text-base"
+        >
           <Server size={18} className="mr-2" />
           Deploy Now
         </button>
       </div>
     </div>
   </div>
-);
+));

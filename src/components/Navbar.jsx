@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronRight, User, Gamepad, Shield, Headphones, HandHelpingIcon, Phone, BookOpen, Layout, Activity } from 'lucide-react';
 
@@ -18,40 +18,49 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    {
-      name: 'Top Games',
-      href: '/games',
-      icon: Gamepad,
-      dropdown: [{ name: 'Minecraft', href: '/minecraft' }],
-    },
-    {
-      name: 'Services',
-      href: '#',
-      icon: Shield,
-      dropdown: [
-        { name: 'Game Hosting', href: '/games' },
-        { name: 'Web Hosting', href: '/webhosting' },
-        { name: 'VPS Services', href: '/vps' },
-      ],
-    },
-    { name: 'Partners', href: '/partners', icon: HandHelpingIcon },
-    { name: 'Ticket Support', href: '/example', icon: Headphones },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { name: 'Home', href: '/' },
+      {
+        name: 'Top Games',
+        href: '/games',
+        icon: Gamepad,
+        dropdown: [{ name: 'Minecraft', href: '/minecraft' }],
+      },
+      {
+        name: 'Services',
+        href: '#',
+        icon: Shield,
+        dropdown: [
+          { name: 'Game Hosting', href: '/games' },
+          { name: 'Web Hosting', href: '/webhosting' },
+          { name: 'VPS Services', href: '/vps' },
+        ],
+      },
+      { name: 'Partners', href: '/partners', icon: HandHelpingIcon },
+      { name: 'Ticket Support', href: '/example', icon: Headphones },
+    ],
+    []
+  );
 
-  const quickLinks = [
-    { name: 'Knowledgebase', href: '/knowledgebase', icon: BookOpen },
-    { name: 'cPanel Login', href: '/cpanel', icon: Layout },
-    { name: 'Status Page', href: '/status', icon: Activity },
-    { name: 'Game Panel', href: '/game-panel', icon: Gamepad },
-  ];
+  const quickLinks = useMemo(
+    () => [
+      { name: 'Knowledgebase', href: '/knowledgebase', icon: BookOpen },
+      { name: 'cPanel Login', href: '/cpanel', icon: Layout },
+      { name: 'Status Page', href: '/status', icon: Activity },
+      { name: 'Game Panel', href: '/game-panel', icon: Gamepad },
+    ],
+    []
+  );
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    setIsOpen(false);
-    setMobileActiveDropdown(null);
-  };
+  const handleNavigation = useCallback(
+    (path) => {
+      navigate(path);
+      setIsOpen(false);
+      setMobileActiveDropdown(null);
+    },
+    [navigate]
+  );
 
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { Star, Server, Globe, Gamepad, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -43,7 +43,7 @@ const games = [
   },
 ];
 
-const StatCard = ({ icon: Icon, label, value, className = '' }) => (
+const StatCard = memo(({ icon: Icon, label, value, className = '' }) => (
   <div className={`bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 ${className}`}>
     <div className="flex items-center text-blue-400 mb-2">
       <Icon size={18} className="mr-2" />
@@ -51,16 +51,16 @@ const StatCard = ({ icon: Icon, label, value, className = '' }) => (
     </div>
     <div className="text-white font-bold text-lg">{value}</div>
   </div>
-);
+));
 
-const FeatureItem = ({ feature }) => (
+const FeatureItem = memo(({ feature }) => (
   <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="text-gray-300 flex items-center">
     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
     {feature}
   </motion.li>
-);
+));
 
-const NavButton = ({ direction, onClick, disabled }) => (
+const NavButton = memo(({ direction, onClick, disabled }) => (
   <button
     type="button"
     onClick={onClick}
@@ -72,9 +72,9 @@ const NavButton = ({ direction, onClick, disabled }) => (
   >
     {direction === 'left' ? <ChevronLeft size={24} /> : <ChevronRight size={24} />}
   </button>
-);
+));
 
-export default function GameHostingShowcase() {
+function GameHostingShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
@@ -90,17 +90,17 @@ export default function GameHostingShowcase() {
     return () => clearInterval(timer);
   }, [autoplay]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % games.length);
     setAutoplay(false);
-  };
+  }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + games.length) % games.length);
     setAutoplay(false);
-  };
+  }, []);
 
   return (
     <section className="bg-gradient-to-b min-h-screen from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
@@ -217,3 +217,5 @@ export default function GameHostingShowcase() {
     </section>
   );
 }
+
+export default memo(GameHostingShowcase);

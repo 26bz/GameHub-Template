@@ -1,42 +1,49 @@
 import { Twitter, Headset, Mail, Phone, Instagram, Youtube, ArrowUp } from 'lucide-react';
+import { useCallback, useMemo } from 'react';
 
 export default function Footer() {
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  }, []);
 
-  const footerLinks = {
-    products: [
-      { name: 'Game Hosting', href: '/games' },
-      { name: 'VPS Services', href: '/vps' },
-      { name: 'Web Hosting', href: '/webhosting' },
-    ],
-    company: [
-      { name: 'About Us', href: '/about' },
-      { name: 'Blog', href: '/blog' },
-      { name: 'Partners', href: '/partners' },
-    ],
-    support: [
-      { name: 'Help Center', href: '/help' },
-      { name: 'Server Status', href: '/status' },
-      { name: 'Knowledge Base', href: '/kb' },
-      { name: 'Contact Support', href: '/support' },
-    ],
-    legal: [
-      { name: 'Terms of Service', href: '/terms-of-service' },
-      { name: 'Privacy Policy', href: '/privacy-policy' },
-      { name: 'Cookie Policy', href: '/cookie-policy' },
-      { name: 'GDPR', href: '/gdpr' },
-      { name: 'Acceptable Use', href: '/aup' },
-    ],
-  };
+  const footerLinks = useMemo(
+    () => ({
+      products: [
+        { name: 'Game Hosting', href: '/games' },
+        { name: 'VPS Services', href: '/vps' },
+        { name: 'Web Hosting', href: '/webhosting' },
+      ],
+      company: [
+        { name: 'About Us', href: '/about' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'Partners', href: '/partners' },
+      ],
+      support: [
+        { name: 'Help Center', href: '/help' },
+        { name: 'Server Status', href: '/status' },
+        { name: 'Knowledge Base', href: '/kb' },
+        { name: 'Contact Support', href: '/support' },
+      ],
+      legal: [
+        { name: 'Terms of Service', href: '/terms-of-service' },
+        { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Cookie Policy', href: '/cookie-policy' },
+        { name: 'GDPR', href: '/gdpr' },
+        { name: 'Acceptable Use', href: '/aup' },
+      ],
+    }),
+    []
+  );
 
-  const socialLinks = [
-    { icon: Headset, href: '/discord', label: 'Discord' },
-    { icon: Twitter, href: '/twitter', label: 'Twitter' },
-    { icon: Instagram, href: '/instagram', label: 'Instagram' },
-    { icon: Youtube, href: '/youtube', label: 'YouTube' },
-  ];
+  const socialLinks = useMemo(
+    () => [
+      { icon: Headset, href: '/discord', label: 'Discord' },
+      { icon: Twitter, href: '/twitter', label: 'Twitter' },
+      { icon: Instagram, href: '/instagram', label: 'Instagram' },
+      { icon: Youtube, href: '/youtube', label: 'YouTube' },
+    ],
+    []
+  );
 
   return (
     <footer className="bg-gray-900 text-white relative">

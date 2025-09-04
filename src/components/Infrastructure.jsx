@@ -1,5 +1,6 @@
 import { Cpu, Shield, HeartHandshake, Server } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
 
 const infrastructure = [
   {
@@ -48,21 +49,21 @@ const infrastructure = [
   },
 ];
 
-const FeatureItem = ({ feature }) => (
+const FeatureItem = memo(({ feature }) => (
   <motion.li initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="text-gray-300 flex items-center text-sm">
     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
     {feature}
   </motion.li>
-);
+));
 
-const StatCard = ({ label, value, className = '' }) => (
+const StatCard = memo(({ label, value, className = '' }) => (
   <div className={`bg-gray-800/50 p-3 rounded-lg border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 ${className}`}>
     <div className="text-gray-400 text-xs mb-1">{label}</div>
     <div className="text-white font-bold">{value}</div>
   </div>
-);
+));
 
-export default function InfrastructureSection() {
+function InfrastructureSection() {
   return (
     <section className="bg-gradient-to-b from-transparent via-gray-900 to-black py-16 sm:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
@@ -77,42 +78,48 @@ export default function InfrastructureSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {infrastructure.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-4 sm:p-8 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5 mb-6 sm:mb-8">
-                <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} transform transition-transform duration-500 group-hover:scale-110 self-start`}>
-                  <item.icon size={24} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400 text-md">{item.description}</p>
-                </div>
-              </div>
+          {useMemo(
+            () =>
+              infrastructure.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-4 sm:p-8 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5 mb-6 sm:mb-8">
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} transform transition-transform duration-500 group-hover:scale-110 self-start`}>
+                      <item.icon size={24} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{item.title}</h3>
+                      <p className="text-gray-400 text-md">{item.description}</p>
+                    </div>
+                  </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mb-6 sm:mb-8">
-                {item.stats.map((stat) => (
-                  <StatCard key={stat.label} label={stat.label} value={stat.value} />
-                ))}
-              </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mb-6 sm:mb-8">
+                    {item.stats.map((stat) => (
+                      <StatCard key={stat.label} label={stat.label} value={stat.value} />
+                    ))}
+                  </div>
 
-              <div>
-                <h4 className="text-white font-medium mb-4 text-sm">Key Features</h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5">
-                  {item.features.map((feature) => (
-                    <FeatureItem key={feature} feature={feature} />
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+                  <div>
+                    <h4 className="text-white font-medium mb-4 text-sm">Key Features</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5">
+                      {item.features.map((feature) => (
+                        <FeatureItem key={feature} feature={feature} />
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              )),
+            []
+          )}
         </div>
       </div>
     </section>
   );
 }
+
+export default memo(InfrastructureSection);

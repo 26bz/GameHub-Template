@@ -1,5 +1,6 @@
 import { Headset, Rocket, Shield, Clock, Users, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
 
 const features = [
   {
@@ -24,7 +25,7 @@ const features = [
   },
 ];
 
-const FeatureCard = ({ feature }) => (
+const FeatureCard = memo(({ feature }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -37,9 +38,9 @@ const FeatureCard = ({ feature }) => (
     <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{feature.title}</h3>
     <p className="text-gray-400 text-sm sm:text-base">{feature.description}</p>
   </motion.div>
-);
+));
 
-export default function EnterpriseSupport() {
+function EnterpriseSupport() {
   return (
     <section className="bg-gradient-to-b min-h-screen from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
@@ -47,31 +48,35 @@ export default function EnterpriseSupport() {
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
-      {[...Array(20)].map((_, i) => {
-        const dotId = `animated-dot-${i}`;
-        const topPosition = `${Math.random() * 100}%`;
-        const leftPosition = `${Math.random() * 100}%`;
-        const animationDuration = 3 + Math.random() * 3;
-        const animationDelay = Math.random() * 2;
-        
-        return (
-          <motion.div
-            key={dotId}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{
-              duration: animationDuration,
-              repeat: Infinity,
-              delay: animationDelay,
-            }}
-            className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
-            style={{
-              top: topPosition,
-              left: leftPosition,
-            }}
-          />
-        );
-      })}
+      {useMemo(
+        () =>
+          [...Array(20)].map((_, i) => {
+            const dotId = `animated-dot-${i}`;
+            const topPosition = `${Math.random() * 100}%`;
+            const leftPosition = `${Math.random() * 100}%`;
+            const animationDuration = 3 + Math.random() * 3;
+            const animationDelay = Math.random() * 2;
+
+            return (
+              <motion.div
+                key={dotId}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{
+                  duration: animationDuration,
+                  repeat: Infinity,
+                  delay: animationDelay,
+                }}
+                className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+                style={{
+                  top: topPosition,
+                  left: leftPosition,
+                }}
+              />
+            );
+          }),
+        []
+      )}
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12 sm:mb-16">
@@ -137,3 +142,5 @@ export default function EnterpriseSupport() {
     </section>
   );
 }
+
+export default memo(EnterpriseSupport);

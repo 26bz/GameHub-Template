@@ -1,5 +1,6 @@
 import { Server, Network, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
 
 const locations = [
   {
@@ -34,7 +35,7 @@ const locations = [
   },
 ];
 
-const LocationCard = ({ region }) => (
+const LocationCard = memo(({ region }) => (
   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} whileHover={{ y: -5 }} className="group relative">
     <div className="absolute inset-0 bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700/50 transition-all duration-500 group-hover:border-gray-600/50" />
 
@@ -79,9 +80,9 @@ const LocationCard = ({ region }) => (
       </div>
     </div>
   </motion.div>
-);
+));
 
-export function GlobalLocations() {
+function GlobalLocations() {
   return (
     <section className="bg-gradient-to-b from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
@@ -97,14 +98,10 @@ export function GlobalLocations() {
           <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto">Strategic locations worldwide ensuring low latency for your players</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {locations.map((region) => (
-            <LocationCard key={region.region} region={region} />
-          ))}
-        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">{useMemo(() => locations.map((region) => <LocationCard key={region.region} region={region} />), [])}</div>
       </div>
     </section>
   );
 }
 
-export default GlobalLocations;
+export default memo(GlobalLocations);

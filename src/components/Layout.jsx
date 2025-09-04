@@ -1,8 +1,9 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { BackToTop } from './shared-components';
+import { memo } from 'react';
 
-export default function Layout({ children }) {
+function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -12,3 +13,5 @@ export default function Layout({ children }) {
     </div>
   );
 }
+
+export default memo(Layout);

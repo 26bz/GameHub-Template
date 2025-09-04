@@ -1,32 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 import { Server, Shield, Users, Database, Globe, Cpu, ArrowRight, Gamepad } from 'lucide-react';
 
-const AnimatedValue = ({ value, duration = 2000, decimals = 0 }) => {
+const AnimatedValue = memo(({ value, duration = 2000, decimals = 0 }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const steps = 50;
-    const increment = value / steps;
-    const interval = duration / steps;
+    let animationFrameId;
+    let startTime;
 
-    let current = 0;
-    const timer = setInterval(() => {
-      current += increment;
-      if (current > value) {
-        setCount(value);
-        clearInterval(timer);
-      } else {
-        setCount(current);
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+
+      const progress = Math.min(elapsed / duration, 1);
+      const nextCount = progress * value;
+
+      setCount(nextCount);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
       }
-    }, interval);
+    };
 
-    return () => clearInterval(timer);
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, [value, duration]);
 
-  return decimals === 0 ? Math.floor(count).toLocaleString() : count.toFixed(decimals);
-};
+  const formattedValue = useMemo(() => {
+    return decimals === 0 ? Math.floor(count).toLocaleString() : count.toFixed(decimals);
+  }, [count, decimals]);
 
-const StatsCard = ({ icon: Icon, value, label, suffix = '+', decimals = 0 }) => (
+  return formattedValue;
+});
+
+const StatsCard = memo(({ icon: Icon, value, label, suffix = '+', decimals = 0 }) => (
   <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl" />
     <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/0 via-blue-500/0 to-purple-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/10 group-hover:to-blue-500/10 blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
@@ -42,9 +54,9 @@ const StatsCard = ({ icon: Icon, value, label, suffix = '+', decimals = 0 }) => 
       </div>
     </div>
   </div>
-);
+));
 
-const FeatureCard = ({ icon: Icon, title, description }) => (
+const FeatureCard = memo(({ icon: Icon, title, description }) => (
   <div className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-xl p-4 sm:p-6 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 relative overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-all duration-300" />
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-purple-500/0 to-blue-500/0 group-hover:from-blue-500/5 group-hover:via-purple-500/5 group-hover:to-blue-500/5 blur-xl transition-all duration-300" />
@@ -59,9 +71,39 @@ const FeatureCard = ({ icon: Icon, title, description }) => (
       <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
     </div>
   </div>
-);
+));
 
-export default function HeroSection() {
+function HeroSection() {
+  const stats = useMemo(
+    () => [
+      { icon: Server, value: 500, label: 'Active Servers', suffix: '+', decimals: 0 },
+      { icon: Globe, value: 15, label: 'Global Locations', suffix: '+', decimals: 0 },
+      { icon: Shield, value: 2.5, label: 'Tbps Protection', suffix: '+', decimals: 1 },
+      { icon: Database, value: 99.9, label: 'Uptime %', suffix: '%', decimals: 1 },
+    ],
+    []
+  );
+
+  const features = useMemo(
+    () => [
+      {
+        icon: Cpu,
+        title: 'Instant Deployment',
+        description: 'Get your server running in under 60 seconds with our automated setup system and intuitive control panel.',
+      },
+      {
+        icon: Shield,
+        title: 'Enterprise Security',
+        description: 'Stay protected with multi-layered DDoS protection and automated threat mitigation systems.',
+      },
+      {
+        icon: Users,
+        title: '24/7 Expert Support',
+        description: 'Our team of gaming specialists is available around the clock to ensure your servers run smoothly.',
+      },
+    ],
+    []
+  );
   return (
     <section className="relative min-h-screen py-16 sm:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gray-900">
@@ -117,18 +159,19 @@ export default function HeroSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16 px-4 sm:px-0">
-          <StatsCard icon={Server} value={500} label="Active Servers" />
-          <StatsCard icon={Globe} value={15} label="Global Locations" />
-          <StatsCard icon={Shield} value={2.5} label="Tbps Protection" decimals={1} />
-          <StatsCard icon={Database} value={99.9} label="Uptime %" decimals={1} suffix="%" />
+          {stats.map((stat) => (
+            <StatsCard key={stat.label} icon={stat.icon} value={stat.value} label={stat.label} decimals={stat.decimals} suffix={stat.suffix} />
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 px-4 sm:px-0">
-          <FeatureCard icon={Cpu} title="Instant Deployment" description="Get your server running in under 60 seconds with our automated setup system and intuitive control panel." />
-          <FeatureCard icon={Shield} title="Enterprise Security" description="Stay protected with multi-layered DDoS protection and automated threat mitigation systems." />
-          <FeatureCard icon={Users} title="24/7 Expert Support" description="Our team of gaming specialists is available around the clock to ensure your servers run smoothly." />
+          {features.map((feature) => (
+            <FeatureCard key={feature.title} icon={feature.icon} title={feature.title} description={feature.description} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+export default memo(HeroSection);
