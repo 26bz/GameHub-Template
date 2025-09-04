@@ -41,7 +41,6 @@ const LocationCard = ({ region }) => (
     <div className={`absolute inset-0 rounded-2xl transition-colors duration-500 ${region.bgGlow} blur opacity-0 group-hover:opacity-100`} />
 
     <div className="relative p-4 sm:p-8">
-      {/* Icon & Region */}
       <div
         className={`w-10 sm:w-12 h-10 sm:h-12 rounded-xl bg-gradient-to-r ${region.gradient} p-2 sm:p-2.5 mb-4 sm:mb-6 transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
       >
@@ -54,7 +53,6 @@ const LocationCard = ({ region }) => (
 
       <p className="text-gray-300 mb-4 sm:mb-6 text-base sm:text-lg leading-relaxed">{region.description}</p>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 gap-3 sm:gap-4 mb-4 sm:mb-6">
         <div className="bg-gray-900/50 rounded-xl p-3 sm:p-4 border border-gray-700/50 group-hover:border-blue-500/20 transition-all duration-300">
           <div className="text-sm text-gray-400 mb-1">Servers</div>
@@ -62,7 +60,6 @@ const LocationCard = ({ region }) => (
         </div>
       </div>
 
-      {/* Locations List */}
       <div className="space-y-2 sm:space-y-3">
         {region.locations.map((location) => (
           <motion.div
@@ -77,7 +74,6 @@ const LocationCard = ({ region }) => (
         ))}
       </div>
 
-      {/* Progress Bar */}
       <div className="mt-6 sm:mt-8 h-1.5 sm:h-2 w-full bg-gray-800 rounded-full overflow-hidden">
         <motion.div initial={{ width: 0 }} animate={{ width: `${region.progress}%` }} transition={{ duration: 1, delay: 0.5 }} className={`h-full bg-gradient-to-r ${region.gradient}`} />
       </div>
@@ -88,7 +84,6 @@ const LocationCard = ({ region }) => (
 export function GlobalLocations() {
   return (
     <section className="bg-gradient-to-b from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />

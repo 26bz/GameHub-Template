@@ -60,7 +60,6 @@ export const PlanCard = ({ plan, type }) => (
           <span className="text-white font-medium">{plan.rating}</span>
         </div>
       </div>
-
       {plan.badge && <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium animate-pulse">{plan.badge}</div>}
 
       <div className="space-y-1 mb-4 sm:mb-6 border-t border-b border-gray-700/50 py-3 sm:py-4">

@@ -22,7 +22,6 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
       <div className="max-w-[90rem] mx-auto px-4 relative z-10">
-        {/* Mobile Table of Contents Toggle */}
         <div className="lg:hidden mb-6">
           <button
             onClick={() => setIsTocOpen(!isTocOpen)}
@@ -47,7 +46,6 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
         </div>
 
         <div className="grid lg:grid-cols-[300px_1fr] gap-4 sm:gap-6">
-          {/* Desktop Table of Contents */}
           <nav
             className="hidden lg:block bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 h-fit sticky top-6"
             aria-label="Table of contents"
@@ -64,7 +62,6 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
             </ul>
           </nav>
 
-          {/* Main Content */}
           <div className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-xl p-4 sm:p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
             <h1 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6 py-2 sm:py-3 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" id="top">
               {title}
@@ -72,7 +69,6 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
 
             <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">Last updated: {lastUpdated}</p>
 
-            {/* Sections */}
             <article className="prose prose-invert max-w-none">
               {sections.map((section, index) => (
                 <div key={index} id={`section-${index}`} className="mb-8 sm:mb-12">

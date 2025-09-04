@@ -53,7 +53,6 @@ export default function AboutPage() {
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-block mb-4 sm:mb-6 bg-gray-800/50 rounded-full p-1 backdrop-blur-sm border border-gray-700/50">
             <div className="flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2">
@@ -71,7 +70,6 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* Mission Statement */}
         <div className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-xl p-4 sm:p-8 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 mb-12 sm:mb-16">
           <div className="max-w-3xl mx-auto text-center">
             <Target className="w-8 h-8 sm:w-12 sm:h-12 text-blue-400 mx-auto mb-3 sm:mb-4" />
@@ -82,7 +80,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Achievements Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-12 sm:mb-16">
           <Achievement icon={Server} title="Active Servers" value="5000+" />
           <Achievement icon={Users} title="Happy Customers" value="50k+" />
@@ -90,7 +87,6 @@ export default function AboutPage() {
           <Achievement icon={Globe} title="Data Centers" value="20+" />
         </div>
 
-        {/* Company Values */}
         <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Our Values</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           <ValueCard icon={Shield} title="Reliability First" description="We prioritize uptime and performance above all else, ensuring your games stay online 24/7." />
@@ -98,7 +94,6 @@ export default function AboutPage() {
           <ValueCard icon={Cpu} title="Technical Excellence" description="Cutting-edge infrastructure and continuous innovation drive our services." />
         </div>
 
-        {/* Team Section */}
         <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Meet Our Team</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {teamMembers.map((member, index) => (

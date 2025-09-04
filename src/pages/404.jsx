@@ -4,7 +4,6 @@ import { Server } from 'lucide-react';
 const NotFound = () => {
   return (
     <section className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
 

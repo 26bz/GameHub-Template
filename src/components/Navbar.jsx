@@ -55,11 +55,9 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Overlay for mobile menu */}
       {isOpen && <div className="fixed inset-0 bg-black/80 z-40 md:hidden" onClick={() => setIsOpen(false)} />}
 
       <nav className="fixed w-full top-0 z-50 transition-all duration-300 bg-gray-900 border-b border-gray-800">
-        {/* Top Bar */}
         <div className="hidden md:block bg-gray-900 text-gray-300 py-1 border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
@@ -78,7 +76,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Main Navbar */}
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -88,7 +85,6 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
@@ -122,7 +118,6 @@ export default function Navbar() {
                 </div>
               ))}
 
-              {/* Action Buttons */}
               <div className="flex items-center space-x-2 ml-4">
                 <a
                   href="https://example.com/"
@@ -135,7 +130,6 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -143,7 +137,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Navigation Menu */}
           <div
             className={`fixed inset-y-0 right-0 w-full sm:max-w-sm bg-gray-900 shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             style={{
@@ -162,7 +155,6 @@ export default function Navbar() {
 
             {/* Mobile Menu Content */}
             <div className="overflow-y-auto h-[calc(100vh-4rem)]">
-              {/* Quick Contact */}
               <div className="p-4 bg-gray-800">
                 <a href="tel:+1234567890" className="flex items-center space-x-3 text-gray-300 hover:text-white">
                   <Phone size={20} />
@@ -170,7 +162,6 @@ export default function Navbar() {
                 </a>
               </div>
 
-              {/* Main Navigation */}
               <div className="p-4 space-y-1">
                 {navLinks.map((link) => (
                   <div key={link.name}>
@@ -208,7 +199,6 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Quick Links Section */}
               <div className="p-3 bg-gray-800/50">
                 <h3 className="text-xs font-semibold text-gray-400 mb-2 px-3 uppercase tracking-wider">Quick Links</h3>
                 <div className="space-y-1">
@@ -225,7 +215,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Client Area Button */}
               <div className="p-3 bg-gray-900 border-t border-gray-800">
                 <a
                   href="https://example.com/"

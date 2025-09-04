@@ -120,7 +120,6 @@ function App() {
     <Router>
       <Helmet>
         <title>GameHub</title>
-        {/* Add other meta tags as needed */}
       </Helmet>
       <AppContent />
     </Router>

@@ -19,7 +19,6 @@ const FeatureItem = ({ feature }) => (
 const VPSHostingCard = ({ plan }) => (
   <div className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
     <div className="p-6 flex flex-col md:grid md:grid-cols-12 gap-6 md:gap-4">
-      {/* Left Section - Title, Rating, Badges */}
       <div className="md:col-span-2 md:border-r border-gray-700/50 md:pr-3">
         <div className="flex flex-col h-full justify-between">
           <div>
@@ -50,7 +49,6 @@ const VPSHostingCard = ({ plan }) => (
         </div>
       </div>
 
-      {/* Middle Section - Specs */}
       <div className="md:col-span-6 md:border-r md:pr-3 border-t border-gray-700/50 py-6 md:py-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5">
           <SpecItem icon={Cpu} spec={plan.specs.cpu} />
@@ -64,7 +62,6 @@ const VPSHostingCard = ({ plan }) => (
         </div>
       </div>
 
-      {/* Right Section - Features */}
       <div className="md:col-span-4 md:pl-1 border-t border-gray-700/50 pt-6 md:pt-0">
         <div className="grid grid-cols-1 gap-y-1.5">
           {plan.features.map((feature, index) => (

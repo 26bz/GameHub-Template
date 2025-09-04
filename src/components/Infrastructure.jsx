@@ -65,20 +65,17 @@ const StatCard = ({ label, value, className = '' }) => (
 export default function InfrastructureSection() {
   return (
     <section className="bg-gradient-to-b from-transparent via-gray-900 to-black py-16 sm:py-32 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
       <div className="absolute -top-1/2 -right-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -left-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-        {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold bg-clip-text py-3 text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4">Enterprise-Grade Infrastructure</h2>
           <p className="text-xl md:text-2xl font-semibold text-gray-300 mb-8 max-w-3xl mx-auto">Powered by cutting-edge technology and backed by industry experts</p>
         </motion.div>
 
-        {/* Infrastructure Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {infrastructure.map((item, index) => (
             <motion.div
@@ -88,7 +85,6 @@ export default function InfrastructureSection() {
               transition={{ delay: index * 0.1 }}
               className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-4 sm:p-8 backdrop-blur-sm border border-gray-700/50 hover:border-gray-600/50 transition-all duration-500"
             >
-              {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5 mb-6 sm:mb-8">
                 <div className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} transform transition-transform duration-500 group-hover:scale-110 self-start`}>
                   <item.icon size={24} className="text-white" />
@@ -99,14 +95,12 @@ export default function InfrastructureSection() {
                 </div>
               </div>
 
-              {/* Stats Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 mb-6 sm:mb-8">
                 {item.stats.map((stat) => (
                   <StatCard key={stat.label} label={stat.label} value={stat.value} />
                 ))}
               </div>
 
-              {/* Features */}
               <div>
                 <h4 className="text-white font-medium mb-4 text-sm">Key Features</h4>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-5">

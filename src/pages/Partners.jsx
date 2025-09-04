@@ -136,7 +136,6 @@ export default function PartnersPage() {
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
-      {/* Hero Section */}
       <div className="relative pt-16 sm:pt-20 pb-12 sm:pb-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-800/50 border border-gray-700/50 mb-6 sm:mb-8">
@@ -169,7 +168,6 @@ export default function PartnersPage() {
         </div>
       </div>
 
-      {/* Stats Grid */}
       <div className="max-w-6xl mx-auto px-4 mb-12 sm:mb-16">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6">
           <StatsCard icon={Network} value="15+" label="Global Locations" />
@@ -179,7 +177,6 @@ export default function PartnersPage() {
         </div>
       </div>
 
-      {/* Partners Grid */}
       <div className="max-w-6xl mx-auto px-4 pb-16 sm:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           {PARTNERS.map((partner) => (

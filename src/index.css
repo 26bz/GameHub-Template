@@ -13,7 +13,6 @@
   }
 }
 
-/* Loading animations */
 .page-transition-enter {
   opacity: 0;
   transform: translateY(20px);
@@ -36,15 +35,12 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-/* Print styles for legal pages */
 @media print {
-  /* Reset grid layout for printing */
   .grid {
     display: block !important;
     grid-template-columns: none !important;
   }
 
-  /* Hide decorative elements and navigation */
   .bg-grid-white\/\[0\.05\],
   .bg-gradient-to-t,
   .bg-blue-500\/10,
@@ -54,14 +50,12 @@
     display: none !important;
   }
 
-  /* Reset background and text colors for better printing */
   main {
     background: white !important;
     color: black !important;
     padding: 2rem !important;
   }
 
-  /* Ensure content is readable when printed */
   .bg-gray-800\/50 {
     background: transparent !important;
     border: none !important;
@@ -81,12 +75,10 @@
     color: black !important;
   }
 
-  /* Improve readability */
   .leading-relaxed {
     line-height: 1.6 !important;
   }
 
-  /* Add page breaks before sections */
   article > div {
     break-inside: avoid;
     page-break-inside: avoid;

@@ -103,20 +103,17 @@ export default function GameHostingShowcase() {
 
   return (
     <section className="bg-gradient-to-b min-h-screen from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold bg-clip-text py-3 text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4">Our Top Premium Game Servers</h2>
           <p className="text-xl md:text-2xl font-semibold text-gray-300 mb-8 max-w-3xl mx-auto">Discover our top games ready to deploy in seconds with enterprise-grade hardware</p>
         </motion.div>
 
-        {/* Game Showcase Slider */}
         <div className="relative px-4">
           <NavButton direction="left" onClick={handlePrev} disabled={currentIndex === 0} />
           <NavButton direction="right" onClick={handleNext} disabled={currentIndex === games.length - 1} />
@@ -131,7 +128,6 @@ export default function GameHostingShowcase() {
               className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl p-4 sm:p-8 backdrop-blur-sm border border-gray-700/50"
             >
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Image Section */}
                 <div className="relative group h-[250px] sm:h-[400px]">
                   {' '}
                   <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} className="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors rounded-xl" />
@@ -144,12 +140,10 @@ export default function GameHostingShowcase() {
                   {games[currentIndex].promoTag && <div className="absolute top-4 left-4 bg-green-500 text-black px-3 py-1 rounded-lg text-sm font-semibold">{games[currentIndex].promoTag}</div>}
                 </div>
 
-                {/* Content Section */}
                 <div className="flex flex-col h-[400px]">
                   {' '}
                   <div className="flex-1 overflow-y-auto" style={{ minHeight: '0' }}>
                     {' '}
-                    {/* Scrollable area */}
                     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="flex items-start justify-between mb-4">
                       <h3 className="text-3xl font-bold text-white">{games[currentIndex].name}</h3>
                       <div className="flex items-center bg-gray-800 rounded-full px-3 py-1">
@@ -160,12 +154,10 @@ export default function GameHostingShowcase() {
                     <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-gray-300 mb-6 text-lg font-semibold">
                       {games[currentIndex].description}
                     </motion.p>
-                    {/* Stats Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                       <StatCard icon={Server} label="Active Servers" value={games[currentIndex].activeServers} />
                       <StatCard icon={Globe} label="Global Locations" value="15+ Regions" />
                     </div>
-                    {/* Features List */}
                     <div className="mb-6">
                       <h4 className="text-white font-medium mb-3 flex items-center">
                         <Gamepad size={18} className="mr-2 text-blue-500" />
@@ -178,7 +170,6 @@ export default function GameHostingShowcase() {
                       </ul>
                     </div>
                   </div>
-                  {/* Price and CTA  */}
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="pt-6 border-t border-gray-700/50 mt-auto">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                       <div>
@@ -202,7 +193,6 @@ export default function GameHostingShowcase() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Progress Bar */}
           <div className="flex justify-center mt-6 space-x-2">
             {games.map((_, index) => (
               <button

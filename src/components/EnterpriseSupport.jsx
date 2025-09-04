@@ -42,13 +42,11 @@ const FeatureCard = ({ feature }) => (
 export default function EnterpriseSupport() {
   return (
     <section className="bg-gradient-to-b min-h-screen from-transparent via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
-      {/* Background Effects */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
-      {/* Animated Particles */}
       {[...Array(20)].map((_, i) => (
         <motion.div
           key={i}
@@ -68,7 +66,6 @@ export default function EnterpriseSupport() {
       ))}
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header Content */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ scale: 0.9 }}
@@ -122,7 +119,6 @@ export default function EnterpriseSupport() {
             </motion.a>
           </div>
 
-          {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12 px-4">
             {features.map((feature, index) => (
               <FeatureCard key={feature.title} feature={feature} />

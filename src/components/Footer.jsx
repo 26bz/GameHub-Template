@@ -40,10 +40,8 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-white relative">
-      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-          {/* Brand Section */}
           <div className="lg:col-span-1">
             <a href="/" className="flex items-center space-x-2 mb-6">
               <img src="https://placehold.co/50" alt="Logo" className="w-8 h-auto" />
@@ -59,7 +57,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links Sections */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 capitalize bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">{category}</h3>
@@ -76,7 +73,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Contact Bar */}
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800/50">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-gray-300 font-bold text-sm sm:text-base">
@@ -95,7 +91,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-800/50 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm sm:text-base text-center sm:text-left">© {new Date().getFullYear()} GameHub. All rights reserved.</p>
           <div className="flex flex-wrap justify-center gap-6 text-sm">
