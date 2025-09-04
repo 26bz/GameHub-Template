@@ -1,5 +1,5 @@
 import { Twitter, Headset, Mail, Phone, Instagram, Youtube, ArrowUp } from 'lucide-react';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useEffect } from 'react';
 
 export default function Footer() {
   const scrollToTop = useCallback(() => {
@@ -44,6 +44,19 @@ export default function Footer() {
     ],
     []
   );
+
+  useEffect(() => {
+    document.head.appendChild(
+      document.createComment(
+        `Template: %%__RESOURCE_TITLE__%% | Resource ID: %%__RESOURCE__%% | Version: %%__VERSION_NUMBER__%% (%%__VERSION__%%) | Downloaded by: %%__USERNAME__%% (User ID: %%__USER__%%) | Download Time: %%__TIMESTAMP__%% | Platform Verified: %%__BUILTBYBIT__%% | Unique Trace ID: %%__NONCE__%% | Copyright @26bz https://26bz.online | Redistribution & illegal usuage,results in takedowns`
+      )
+    );
+
+    const metaTemplate = document.createElement('meta');
+    metaTemplate.setAttribute('name', 'template-signature');
+    metaTemplate.setAttribute('content', '26bz-GameHub-Template-GH26BZ');
+    document.head.appendChild(metaTemplate);
+  }, []);
 
   return (
     <footer className="bg-gray-900 text-white relative">
@@ -107,6 +120,8 @@ export default function Footer() {
               </a>
             ))}
           </div>
+
+          <span className="div-print-opt" style={{ display: 'none' }}></span>
         </div>
       </div>
     </footer>

@@ -83,10 +83,14 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
-  /*! Template: GameHub - Hosting Company Template | Resource ID: 53667 | Version: v1.6 (213020) | Downloaded by: 26bz (User ID: 473255) | Download Time: 1756961564 | Platform Verified: true | Unique Trace ID: 3d3358e55ead3af04c2ec61c092f09dc | Copyright @26bz https://26bz.online | Redistribution results in takedowns */
   .max-w-7xl {
     max-width: none !important;
     margin: 0 auto !important;
     padding: 0 1in !important;
   }
+}
+
+.div-print-opt::before {
+  content: '26bz-GameHub-Template-GH26BZ';
+  display: none;
 }
