@@ -74,7 +74,7 @@ const PartnerCard = ({ partner }) => (
           </div>
           <div>
             <div className="text-xs sm:text-sm text-blue-400 font-medium mb-0.5 sm:mb-1">{partner.category}</div>
-            <h3 className="text-lg sm:text-xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">{partner.name}</h3>
+            <h3 className="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">{partner.name}</h3>
           </div>
         </div>
         {partner.badge && (
@@ -92,7 +92,7 @@ const PartnerCard = ({ partner }) => (
             key={key}
             className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
           >
-            <div className="text-base sm:text-lg font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">{value}</div>
+            <div className="text-base sm:text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">{value}</div>
             <div className="text-xs sm:text-sm text-gray-400 capitalize">{key}</div>
           </div>
         ))}

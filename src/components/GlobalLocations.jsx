@@ -48,7 +48,7 @@ const LocationCard = ({ region }) => (
         <region.icon className="w-full h-full text-white" />
       </div>
 
-      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-white group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300">
+      <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white to-white group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300">
         {region.region}
       </h3>
 

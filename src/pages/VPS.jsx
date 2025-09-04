@@ -51,7 +51,7 @@ const VPSHostingCard = ({ plan }) => (
       </div>
 
       {/* Middle Section - Specs */}
-      <div className="md:col-span-6 md:border-r border-gray-700/50 md:pr-3 border-t border-gray-700/50 py-6 md:py-0">
+      <div className="md:col-span-6 md:border-r md:pr-3 border-t border-gray-700/50 py-6 md:py-0">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-1.5">
           <SpecItem icon={Cpu} spec={plan.specs.cpu} />
           <SpecItem icon={Server} spec={plan.specs.ram} />
