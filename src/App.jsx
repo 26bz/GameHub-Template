@@ -1,23 +1,11 @@
 import React, { lazy, useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { registerSW } from 'virtual:pwa-register';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from './components/Layout';
 import NotFound from './pages/404';
 import HomePage from './pages/HomePage';
 import ScrollToTop from './utils/ScrollToTop';
-
-const updateSW = registerSW({
-  onNeedRefresh() {
-    if (confirm('New content available. Reload?')) {
-      updateSW(true);
-    }
-  },
-  onOfflineReady() {
-    console.log('App ready to work offline');
-  },
-});
 
 const Games = lazy(() => import('./pages/Games'));
 const MinecraftPage = lazy(() => import('./pages/Minecraft'));
