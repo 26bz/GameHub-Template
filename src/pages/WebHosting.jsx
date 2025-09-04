@@ -43,8 +43,8 @@ const WebHostingCard = ({ plan }) => (
       </div>
 
       <div className="space-y-1 mb-4 sm:mb-6">
-        {plan.features.map((feature, index) => (
-          <FeatureItem key={index} feature={feature} />
+        {plan.features.map((feature) => (
+          <FeatureItem key={feature} feature={feature} />
         ))}
       </div>
 

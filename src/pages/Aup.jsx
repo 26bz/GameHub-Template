@@ -7,7 +7,34 @@ const AUP = () => {
   const [aup, setAup] = useState({});
 
   useEffect(() => {
-    setAup(policiesData.acceptableUsePolicy);
+    let isMounted = true;
+    
+    const loadAup = async () => {
+      try {
+        const aupData = policiesData.acceptableUsePolicy;
+        
+        if (isMounted) {
+          setAup(aupData);
+        }
+      } catch (error) {
+        console.error('Error loading AUP:', error);
+        if (isMounted) {
+          setAup({
+            lastUpdated: 'Error loading content',
+            sections: [{
+              title: 'Error',
+              content: 'Failed to load the Acceptable Use Policy. Please try again later.'
+            }]
+          });
+        }
+      }
+    };
+    
+    loadAup();
+    
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

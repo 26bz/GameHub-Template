@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useRef, useReducer } from 'react';
 import { Search, Server, ChevronDown, Star, Globe } from 'lucide-react';
 import { Helmet } from 'react-helmet';
 
@@ -78,6 +78,7 @@ const FilterButton = ({ label, options, value, onChange }) => {
   return (
     <div className="relative">
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full bg-gray-800/50 backdrop-blur-sm text-white px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all"
       >
@@ -91,6 +92,7 @@ const FilterButton = ({ label, options, value, onChange }) => {
         <div className="absolute z-10 w-full mt-2 bg-gray-800/90 backdrop-blur-sm rounded-xl border border-gray-700 shadow-xl">
           <div className="py-1">
             <button
+              type="button"
               onClick={() => {
                 onChange('');
                 setIsOpen(false);
@@ -101,6 +103,7 @@ const FilterButton = ({ label, options, value, onChange }) => {
             </button>
             {options.map((option) => (
               <button
+                type="button"
                 key={option}
                 onClick={() => {
                   onChange(option);
@@ -145,8 +148,8 @@ const GameCard = ({ game }) => (
       </div>
 
       <div className="space-y-2 mb-4 sm:mb-6">
-        {game.features.map((feature, index) => (
-          <FeatureItem key={index} feature={feature} />
+        {game.features.map((feature) => (
+          <FeatureItem key={feature} feature={feature} />
         ))}
       </div>
 
@@ -174,13 +177,21 @@ export default function GamesPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [popularityFilter, setPopularityFilter] = useState('');
-  const [filteredGames, setFilteredGames] = useState(SAMPLE_GAMES);
-
-  useEffect(() => {
+  const [filteredGames, dispatchFilteredGames] = useReducer((state, action) => {
+    if (action.type === 'SET_FILTERED_GAMES') {
+      return action.payload;
+    }
+    return state;
+  }, SAMPLE_GAMES);
+  
+  const filterGames = useCallback(() => {
     let results = SAMPLE_GAMES;
 
     if (searchQuery) {
-      results = results.filter((game) => game.title.toLowerCase().includes(searchQuery.toLowerCase()) || game.description.toLowerCase().includes(searchQuery.toLowerCase()));
+      results = results.filter((game) => 
+        game.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+        game.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     }
     if (categoryFilter) {
       results = results.filter((game) => game.category === categoryFilter);
@@ -189,8 +200,27 @@ export default function GamesPage() {
       results = results.filter((game) => game.popularity === popularityFilter);
     }
 
-    setFilteredGames(results);
+    return results;
   }, [searchQuery, categoryFilter, popularityFilter]);
+  
+  const updateFilteredGames = useCallback((results) => {
+    dispatchFilteredGames({ type: 'SET_FILTERED_GAMES', payload: results });
+  }, []);
+  
+  const isMounted = useRef(true);
+  
+  useEffect(() => {
+    const results = filterGames();
+    
+    if (isMounted.current) {
+      updateFilteredGames(results);
+    }
+    
+    return () => {
+      isMounted.current = false;
+    };
+  }, [filterGames, updateFilteredGames]);
+
 
   return (
     <section className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
@@ -243,6 +273,7 @@ export default function GamesPage() {
           <div className="text-center py-8 sm:py-12 bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50">
             <p className="text-gray-300 text-lg sm:text-xl mb-3 sm:mb-4">No games found matching your criteria</p>
             <button
+              type="button"
               onClick={() => {
                 setSearchQuery('');
                 setCategoryFilter('');

@@ -6,7 +6,34 @@ const PrivacyPolicy = () => {
   const [privacyPolicy, setPrivacyPolicy] = useState({});
 
   useEffect(() => {
-    setPrivacyPolicy(policiesData.privacyPolicy || {});
+    let isMounted = true;
+    
+    const loadPrivacyPolicy = async () => {
+      try {
+        const privacyPolicyData = policiesData.privacyPolicy || {};
+        
+        if (isMounted) {
+          setPrivacyPolicy(privacyPolicyData);
+        }
+      } catch (error) {
+        console.error('Error loading privacy policy:', error);
+        if (isMounted) {
+          setPrivacyPolicy({
+            lastUpdated: 'Error loading content',
+            sections: [{
+              title: 'Error',
+              content: 'Failed to load the Privacy Policy. Please try again later.'
+            }]
+          });
+        }
+      }
+    };
+    
+    loadPrivacyPolicy();
+    
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

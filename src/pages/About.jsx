@@ -96,8 +96,8 @@ export default function AboutPage() {
 
         <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-6 sm:mb-8">Meet Our Team</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
-          {teamMembers.map((member, index) => (
-            <TeamMember key={index} {...member} />
+          {teamMembers.map((member) => (
+            <TeamMember key={member.name} {...member} />
           ))}
         </div>
       </div>

@@ -24,6 +24,7 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
       <div className="max-w-[90rem] mx-auto px-4 relative z-10">
         <div className="lg:hidden mb-6">
           <button
+            type="button"
             onClick={() => setIsTocOpen(!isTocOpen)}
             className="w-full bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 flex items-center justify-between text-gray-200"
           >
@@ -33,9 +34,13 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
           {isTocOpen && (
             <nav className="bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-xl mt-2 p-4 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300">
               <ul className="space-y-2">
-                {sections.map((section, index) => (
-                  <li key={`toc-mobile-${index}`}>
-                    <button onClick={() => scrollToSection(`section-${index}`)} className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-left w-full text-sm py-1">
+                {sections.map((section) => (
+                  <li key={`toc-mobile-${section.title}`}>
+                    <button 
+                      type="button"
+                      onClick={() => scrollToSection(`section-${section.title.toLowerCase().replace(/\s+/g, '-')}`)} 
+                      className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-left w-full text-sm py-1"
+                    >
                       {section.title}
                     </button>
                   </li>
@@ -52,9 +57,13 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
           >
             <h2 className="text-lg sm:text-xl font-semibold text-gray-200 mb-4">Table of Contents</h2>
             <ul className="space-y-2">
-              {sections.map((section, index) => (
-                <li key={`toc-${index}`}>
-                  <button onClick={() => scrollToSection(`section-${index}`)} className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-left w-full text-sm sm:text-base">
+              {sections.map((section) => (
+                <li key={`toc-${section.title}`}>
+                  <button 
+                    type="button"
+                    onClick={() => scrollToSection(`section-${section.title.toLowerCase().replace(/\s+/g, '-')}`)}
+                    className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-left w-full text-sm sm:text-base"
+                  >
                     {section.title}
                   </button>
                 </li>
@@ -70,8 +79,8 @@ const LegalPage = ({ title, lastUpdated, sections }) => {
             <p className="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8">Last updated: {lastUpdated}</p>
 
             <article className="prose prose-invert max-w-none">
-              {sections.map((section, index) => (
-                <div key={index} id={`section-${index}`} className="mb-8 sm:mb-12">
+              {sections.map((section) => (
+                <div key={section.title} id={`section-${section.title.toLowerCase().replace(/\s+/g, '-')}`} className="mb-8 sm:mb-12">
                   <h2 className="text-xl sm:text-2xl font-semibold text-gray-200 mb-3 sm:mb-4">{section.title}</h2>
                   <div className="text-gray-400 leading-relaxed text-sm sm:text-base">{section.content}</div>
                 </div>

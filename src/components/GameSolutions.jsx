@@ -62,6 +62,7 @@ const FeatureItem = ({ feature }) => (
 
 const NavButton = ({ direction, onClick, disabled }) => (
   <button
+    type="button"
     onClick={onClick}
     disabled={disabled}
     className={`absolute top-1/2 -translate-y-1/2 ${direction === 'left' ? '-left-4' : '-right-4'} 
@@ -180,6 +181,7 @@ export default function GameHostingShowcase() {
                         </div>
                       </div>
                       <button
+                        type="button"
                         onClick={() => (window.location.href = games[currentIndex].deployLink)}
                         className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 font-medium flex items-center justify-center"
                       >
@@ -194,9 +196,10 @@ export default function GameHostingShowcase() {
           </AnimatePresence>
 
           <div className="flex justify-center mt-6 space-x-2">
-            {games.map((_, index) => (
+            {games.map((game, index) => (
               <button
-                key={index}
+                key={game.id}
+                type="button"
                 onClick={() => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
@@ -205,6 +208,7 @@ export default function GameHostingShowcase() {
                 className={`h-1 rounded-full transition-all duration-500 cursor-pointer hover:bg-blue-400 ${
                   index === currentIndex ? 'w-8 bg-gradient-to-r from-blue-500 to-purple-500' : 'w-2 bg-gray-700'
                 }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>

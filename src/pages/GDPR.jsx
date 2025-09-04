@@ -6,7 +6,34 @@ const GDPRCompliance = () => {
   const [gdprData, setGdprData] = useState({});
 
   useEffect(() => {
-    setGdprData(policiesData.gdprCompliance || {});
+    let isMounted = true;
+    
+    const loadGdprData = async () => {
+      try {
+        const gdprComplianceData = policiesData.gdprCompliance || {};
+        
+        if (isMounted) {
+          setGdprData(gdprComplianceData);
+        }
+      } catch (error) {
+        console.error('Error loading GDPR compliance data:', error);
+        if (isMounted) {
+          setGdprData({
+            lastUpdated: 'Error loading content',
+            sections: [{
+              title: 'Error',
+              content: 'Failed to load the GDPR Compliance information. Please try again later.'
+            }]
+          });
+        }
+      }
+    };
+    
+    loadGdprData();
+    
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

@@ -89,6 +89,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <div key={link.name} className="relative group">
                   <button
+                    type="button"
                     onClick={() => handleNavigation(link.href)}
                     className="px-4 py-2 rounded-lg text-gray-300 group-hover:text-white group-hover:bg-gray-800 transition-all flex items-center space-x-2 font-bold"
                   >
@@ -106,6 +107,7 @@ export default function Navbar() {
                       <div className="absolute h-4 w-full -top-4 bg-transparent"></div>
                       {link.dropdown.map((item) => (
                         <button
+                          type="button"
                           key={item.name}
                           onClick={() => handleNavigation(item.href)}
                           className="block w-full text-left px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-all font-bold"
@@ -131,7 +133,7 @@ export default function Navbar() {
             </div>
 
             <div className="md:hidden">
-              <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
+              <button type="button" onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
@@ -145,15 +147,13 @@ export default function Navbar() {
               zIndex: 999,
             }}
           >
-            {/* Mobile Menu Header */}
             <div className="sticky top-0 flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
               <span className="text-xl font-bold text-white">Menu</span>
-              <button onClick={() => setIsOpen(false)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
+              <button type="button" onClick={() => setIsOpen(false)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
                 <X size={24} />
               </button>
             </div>
 
-            {/* Mobile Menu Content */}
             <div className="overflow-y-auto h-[calc(100vh-4rem)]">
               <div className="p-4 bg-gray-800">
                 <a href="tel:+1234567890" className="flex items-center space-x-3 text-gray-300 hover:text-white">
@@ -166,6 +166,7 @@ export default function Navbar() {
                 {navLinks.map((link) => (
                   <div key={link.name}>
                     <button
+                      type="button"
                       className="w-full text-left px-3 py-2.5 text-gray-100 hover:text-white hover:bg-gray-800 rounded-lg transition-all flex items-center justify-between"
                       onClick={() => {
                         if (link.dropdown) {
@@ -186,6 +187,7 @@ export default function Navbar() {
                       <div className="mt-1 ml-7 pl-3 border-l-2 border-blue-500/20">
                         {link.dropdown.map((item) => (
                           <button
+                            type="button"
                             key={item.name}
                             onClick={() => handleNavigation(item.href)}
                             className="block w-full text-left px-3 py-2.5 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all text-sm"
@@ -204,6 +206,7 @@ export default function Navbar() {
                 <div className="space-y-1">
                   {quickLinks.map((link) => (
                     <button
+                      type="button"
                       key={link.name}
                       onClick={() => handleNavigation(link.href)}
                       className="w-full text-left px-3 py-2.5 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-all flex items-center space-x-3 text-sm"

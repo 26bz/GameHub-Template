@@ -1,4 +1,4 @@
-import React, { lazy, useState, useEffect, useRef } from 'react';
+import React, { lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -65,11 +65,14 @@ function LoadingSkeleton() {
 function AppContent() {
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
+  const handleAnimationComplete = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => {
-    setIsLoading(true);
-
-    return () => setIsLoading(false);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+    
+    return () => clearTimeout(timer);
   }, [location.pathname]);
 
   return (
@@ -77,7 +80,7 @@ function AppContent() {
       <AnimatePresence mode="wait">{isLoading && <LoadingSpinner />}</AnimatePresence>
       <ScrollToTop />
       <AnimatePresence mode="wait">
-        <motion.div key={location.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} onAnimationComplete={() => setIsLoading(false)}>
+          <motion.div key={location.pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} onAnimationComplete={handleAnimationComplete}>
           <React.Suspense fallback={<LoadingSkeleton />}>
             <Layout>
               <Routes>

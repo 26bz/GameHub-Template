@@ -85,7 +85,7 @@ export default function Footer() {
                 +1 (234) 567-890
               </a>
             </div>
-            <button onClick={scrollToTop} className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all hover:scale-105" aria-label="Scroll to top">
+            <button type="button" onClick={scrollToTop} className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 transition-all hover:scale-105" aria-label="Scroll to top">
               <ArrowUp size={22} />
             </button>
           </div>

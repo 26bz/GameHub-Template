@@ -99,9 +99,9 @@ const PartnerCard = ({ partner }) => (
       </div>
 
       <div className="space-y-2 sm:space-y-3">
-        {partner.features.map((feature, index) => (
+        {partner.features.map((feature) => (
           <div
-            key={index}
+            key={feature}
             className="flex items-center text-gray-300 bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
           >
             <Sparkles size={14} className="text-blue-400 mr-2 flex-shrink-0" />

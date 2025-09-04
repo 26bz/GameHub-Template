@@ -7,7 +7,31 @@ const CookiePolicy = () => {
   const [gdprData, setGdprData] = useState({});
 
   useEffect(() => {
-    setGdprData(policiesData.cookiePolicy || {});
+    let isMounted = true;
+    
+    const loadGdprData = async () => {
+      try {
+        const policyData = policiesData.cookiePolicy || {};
+        
+        if (isMounted) {
+          setGdprData(policyData);
+        }
+      } catch (error) {
+        console.error('Error loading cookie policy:', error);
+        if (isMounted) {
+          setGdprData({
+            lastUpdated: 'Error loading content',
+            content: 'Failed to load the Cookie Policy. Please try again later.'
+          });
+        }
+      }
+    };
+    
+    loadGdprData();
+    
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

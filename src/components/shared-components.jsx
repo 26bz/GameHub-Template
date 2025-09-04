@@ -36,6 +36,7 @@ export const BackToTop = () => {
 
   return showBackToTop ? (
     <button
+      type="button"
       onClick={scrollToTop}
       className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:from-blue-600 hover:via-purple-600 hover:to-pink-600 text-white p-2.5 sm:p-3 rounded-full shadow-lg transition-all duration-200 z-50"
       aria-label="Back to top"
@@ -78,8 +79,8 @@ export const PlanCard = ({ plan, type }) => (
       </div>
 
       <div className="space-y-2 mb-6">
-        {plan.features.map((feature, index) => (
-          <div key={index} className="flex items-center text-gray-300">
+        {plan.features.map((feature) => (
+          <div key={feature} className="flex items-center text-gray-300">
             <CheckCircle size={16} className="text-green-500 mr-2 flex-shrink-0" />
             <span>{feature}</span>
           </div>
@@ -94,7 +95,7 @@ export const PlanCard = ({ plan, type }) => (
             <span className="text-gray-400 text-xs sm:text-sm font-normal">/month</span>
           </div>
         </div>
-        <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 font-medium flex items-center text-sm sm:text-base">
+        <button type="button" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25 font-medium flex items-center text-sm sm:text-base">
           <Server size={18} className="mr-2" />
           Deploy Now
         </button>

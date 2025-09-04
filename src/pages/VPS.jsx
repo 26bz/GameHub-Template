@@ -64,8 +64,8 @@ const VPSHostingCard = ({ plan }) => (
 
       <div className="md:col-span-4 md:pl-1 border-t border-gray-700/50 pt-6 md:pt-0">
         <div className="grid grid-cols-1 gap-y-1.5">
-          {plan.features.map((feature, index) => (
-            <FeatureItem key={index} feature={feature} />
+          {plan.features.map((feature) => (
+            <FeatureItem key={feature} feature={feature} />
           ))}
         </div>
       </div>

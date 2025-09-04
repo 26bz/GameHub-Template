@@ -47,23 +47,31 @@ export default function EnterpriseSupport() {
       <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 rounded-full blur-3xl" />
       <div className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-purple-500/10 rounded-full blur-3xl" />
 
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0] }}
-          transition={{
-            duration: 3 + Math.random() * 3,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-          className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-          }}
-        />
-      ))}
+      {[...Array(20)].map((_, i) => {
+        const dotId = `animated-dot-${i}`;
+        const topPosition = `${Math.random() * 100}%`;
+        const leftPosition = `${Math.random() * 100}%`;
+        const animationDuration = 3 + Math.random() * 3;
+        const animationDelay = Math.random() * 2;
+        
+        return (
+          <motion.div
+            key={dotId}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{
+              duration: animationDuration,
+              repeat: Infinity,
+              delay: animationDelay,
+            }}
+            className="absolute w-1 h-1 bg-blue-500/20 rounded-full"
+            style={{
+              top: topPosition,
+              left: leftPosition,
+            }}
+          />
+        );
+      })}
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12 sm:mb-16">
@@ -120,7 +128,7 @@ export default function EnterpriseSupport() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8 sm:mt-12 px-4">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <FeatureCard key={feature.title} feature={feature} />
             ))}
           </div>
