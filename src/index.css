@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+/* Loading animations */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+
+/* Print styles for legal pages */
+@media print {
+  /* Reset grid layout for printing */
+  .grid {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+
+  /* Hide decorative elements and navigation */
+  .bg-grid-white\/\[0\.05\],
+  .bg-gradient-to-t,
+  .bg-blue-500\/10,
+  .bg-purple-500\/10,
+  nav[aria-label="Table of contents"],
+  [aria-label="Back to top"] {
+    display: none !important;
+  }
+
+  /* Reset background and text colors for better printing */
+  main {
+    background: white !important;
+    color: black !important;
+    padding: 2rem !important;
+  }
+
+  /* Ensure content is readable when printed */
+  .bg-gray-800\/50 {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  h1,
+  h2 {
+    color: black !important;
+    background: none !important;
+    -webkit-text-fill-color: black !important;
+  }
+
+  .text-gray-300,
+  .text-gray-400 {
+    color: black !important;
+  }
+
+  /* Improve readability */
+  .leading-relaxed {
+    line-height: 1.6 !important;
+  }
+
+  /* Add page breaks before sections */
+  article > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+/*! Template: GameHub - Hosting Company Template | Resource ID: 53667 | Version: v1.6 (213020) | Downloaded by: 26bz (User ID: 473255) | Download Time: 1756961564 | Platform Verified: true | Unique Trace ID: 3d3358e55ead3af04c2ec61c092f09dc | Copyright @26bz https://26bz.online | Redistribution results in takedowns */
+  .max-w-7xl {
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 1in !important;
+  }
+}
