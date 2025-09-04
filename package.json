@@ -2,12 +2,15 @@
   "name": "gamehub",
   "private": true,
   "version": "1.6",
-  "author": "@26bz https://26bz.online/",
+  "author": {
+    "name": "26BZ",
+    "email": "contact@26bz.online",
+    "url": "https://26bz.online"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
