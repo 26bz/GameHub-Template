@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import LegalPage from "./LegalPage";
-import policiesData from "../components/policies.json";
+import { useEffect, useState } from 'react';
+import LegalPage from './LegalPage';
+import policiesData from '../components/policies.json';
 import { Helmet } from 'react-helmet';
 
 const AUP = () => {
@@ -14,10 +14,7 @@ const AUP = () => {
     <>
       <Helmet>
         <title>Acceptable Use Policy | GameHub</title>
-        <meta
-          name="description"
-          content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting."
-        />
+        <meta name="description" content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting." />
       </Helmet>
 
       <LegalPage
@@ -26,8 +23,8 @@ const AUP = () => {
         sections={
           aup.sections || [
             {
-              title: "Content Unavailable",
-              content: "Content is not available.",
+              title: 'Content Unavailable',
+              content: 'Content is not available.',
             },
           ]
         }

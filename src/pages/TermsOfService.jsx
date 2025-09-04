@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import LegalPage from "./LegalPage";
-import policiesData from "../components/policies.json";
+import { useEffect, useState } from 'react';
+import LegalPage from './LegalPage';
+import policiesData from '../components/policies.json';
 import { Helmet } from 'react-helmet';
 const TermsOfService = () => {
   const [termsOfService, setTermsOfService] = useState({});
@@ -13,10 +13,7 @@ const TermsOfService = () => {
     <>
       <Helmet>
         <title>Terms Of Service | GameHub</title>
-        <meta
-          name="description"
-          content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting."
-        />
+        <meta name="description" content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting." />
       </Helmet>
       <LegalPage
         title="Terms of Service"
@@ -24,8 +21,8 @@ const TermsOfService = () => {
         sections={
           termsOfService.sections || [
             {
-              title: "Content Unavailable",
-              content: "Content is not available.",
+              title: 'Content Unavailable',
+              content: 'Content is not available.',
             },
           ]
         }

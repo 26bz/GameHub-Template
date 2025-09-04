@@ -1,17 +1,5 @@
-import {
-  Shield,
-  Server,
-  Globe,
-  Users,
-  Star,
-  Terminal,
-  Network,
-  Cpu,
-  Clock,
-  HardDrive,
-  Settings,
-} from "lucide-react";
-import { StatCard } from "../components/shared-components";
+import { Shield, Server, Globe, Users, Star, Terminal, Network, Cpu, Clock, HardDrive, Settings } from 'lucide-react';
+import { StatCard } from '../components/shared-components';
 import { Helmet } from 'react-helmet';
 
 const SpecItem = ({ icon: Icon, spec }) => (
@@ -35,38 +23,21 @@ const VPSHostingCard = ({ plan }) => (
       <div className="md:col-span-2 md:border-r border-gray-700/50 md:pr-3">
         <div className="flex flex-col h-full justify-between">
           <div>
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-              {plan.title}
-            </h3>
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{plan.title}</h3>
             <div className="flex items-center bg-gray-800 rounded-full px-3 py-1 w-fit mb-2">
-              <Star
-                size={16}
-                className="text-yellow-400 fill-yellow-400 mr-1.5"
-              />
-              <span className="text-white font-medium text-base">
-                {plan.rating}
-              </span>
+              <Star size={16} className="text-yellow-400 fill-yellow-400 mr-1.5" />
+              <span className="text-white font-medium text-base">{plan.rating}</span>
             </div>
             <div className="flex flex-wrap gap-2 md:flex-col md:gap-1.5">
-              {plan.badge && (
-                <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse w-fit">
-                  {plan.badge}
-                </div>
-              )}
-              {plan.promoTag && (
-                <div className="inline-block bg-green-500 text-white px-3 py-1 rounded-lg text-sm font-medium w-fit">
-                  {plan.promoTag}
-                </div>
-              )}
+              {plan.badge && <div className="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium animate-pulse w-fit">{plan.badge}</div>}
+              {plan.promoTag && <div className="inline-block bg-green-500 text-white px-3 py-1 rounded-lg text-sm font-medium w-fit">{plan.promoTag}</div>}
             </div>
           </div>
           <div className="mt-3">
             <div className="text-gray-400 text-sm">Starting at</div>
             <div className="flex items-baseline text-2xl font-bold text-white">
               ${plan.price}
-              <span className="text-gray-400 text-sm font-normal ml-1">
-                /month
-              </span>
+              <span className="text-gray-400 text-sm font-normal ml-1">/month</span>
             </div>
             <a
               href={plan.purchaseUrl}
@@ -108,84 +79,63 @@ const VPSHostingCard = ({ plan }) => (
 const VPS_HOSTING_PLANS = [
   {
     id: 1,
-    title: "Basic VPS",
+    title: 'Basic VPS',
     price: 9.99,
     rating: 4.5,
     specs: {
-      cpu: "2 vCPU Cores",
-      ram: "2 GB RAM",
-      storage: "40 GB NVMe SSD",
-      bandwidth: "2 TB",
-      location: "Multiple Regions",
-      os: "Linux/Windows",
-      management: "Self-Managed",
-      uptime: "99.9% Guaranteed",
+      cpu: '2 vCPU Cores',
+      ram: '2 GB RAM',
+      storage: '40 GB NVMe SSD',
+      bandwidth: '2 TB',
+      location: 'Multiple Regions',
+      os: 'Linux/Windows',
+      management: 'Self-Managed',
+      uptime: '99.9% Guaranteed',
     },
-    features: [
-      "Full Root Access",
-      "IPv4 & IPv6",
-      "DDoS Protection",
-      "Automated Backups",
-      "Instant Deployment",
-      "24/7 Support",
-    ],
-    badge: "",
-    promoTag: "STARTER",
-    purchaseUrl: "/vps/deploy/basic",
+    features: ['Full Root Access', 'IPv4 & IPv6', 'DDoS Protection', 'Automated Backups', 'Instant Deployment', '24/7 Support'],
+    badge: '',
+    promoTag: 'STARTER',
+    purchaseUrl: '/vps/deploy/basic',
   },
   {
     id: 2,
-    title: "Premium VPS",
+    title: 'Premium VPS',
     price: 19.99,
     rating: 4.7,
     specs: {
-      cpu: "4 vCPU Cores",
-      ram: "4 GB RAM",
-      storage: "80 GB NVMe SSD",
-      bandwidth: "4 TB",
-      location: "Custom Region",
-      os: "Linux/Windows",
-      management: "Basic Management",
-      uptime: "99.95% Guaranteed",
+      cpu: '4 vCPU Cores',
+      ram: '4 GB RAM',
+      storage: '80 GB NVMe SSD',
+      bandwidth: '4 TB',
+      location: 'Custom Region',
+      os: 'Linux/Windows',
+      management: 'Basic Management',
+      uptime: '99.95% Guaranteed',
     },
-    features: [
-      "Everything in Basic",
-      "Priority Support",
-      "Advanced Firewall",
-      "Load Balancer Ready",
-      "Private Networking",
-      "Dedicated IP",
-    ],
-    badge: "MOST POPULAR",
-    promoTag: "BEST VALUE",
-    purchaseUrl: "/vps/deploy/premium",
+    features: ['Everything in Basic', 'Priority Support', 'Advanced Firewall', 'Load Balancer Ready', 'Private Networking', 'Dedicated IP'],
+    badge: 'MOST POPULAR',
+    promoTag: 'BEST VALUE',
+    purchaseUrl: '/vps/deploy/premium',
   },
   {
     id: 3,
-    title: "Enterprise VPS",
+    title: 'Enterprise VPS',
     price: 39.99,
     rating: 4.9,
     specs: {
-      cpu: "8 vCPU Cores",
-      ram: "8 GB RAM",
-      storage: "160 GB NVMe SSD",
-      bandwidth: "8 TB",
-      location: "Multi-Region",
-      os: "Custom OS Support",
-      management: "Fully Managed",
-      uptime: "99.99% Guaranteed",
+      cpu: '8 vCPU Cores',
+      ram: '8 GB RAM',
+      storage: '160 GB NVMe SSD',
+      bandwidth: '8 TB',
+      location: 'Multi-Region',
+      os: 'Custom OS Support',
+      management: 'Fully Managed',
+      uptime: '99.99% Guaranteed',
     },
-    features: [
-      "Everything in Premium",
-      "Enterprise Support",
-      "Auto-Scaling Ready",
-      "Dedicated Resources",
-      "Custom Control Panel",
-      "Advanced Monitoring",
-    ],
-    badge: "ENTERPRISE",
-    promoTag: "PREMIUM",
-    purchaseUrl: "/vps/deploy/enterprise",
+    features: ['Everything in Premium', 'Enterprise Support', 'Auto-Scaling Ready', 'Dedicated Resources', 'Custom Control Panel', 'Advanced Monitoring'],
+    badge: 'ENTERPRISE',
+    promoTag: 'PREMIUM',
+    purchaseUrl: '/vps/deploy/enterprise',
   },
 ];
 
@@ -194,10 +144,7 @@ export default function VPSHostingPage() {
     <section className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
       <Helmet>
         <title>VPS Hosting | GameHub</title>
-        <meta
-          name="description"
-          content="High-performance VPS hosting solutions with dedicated resources and full root access."
-        />
+        <meta name="description" content="High-performance VPS hosting solutions with dedicated resources and full root access." />
       </Helmet>
 
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
@@ -210,10 +157,7 @@ export default function VPSHostingPage() {
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold py-2 sm:py-3 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-4 sm:mb-6">
             Virtual Private Servers
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            High-performance VPS hosting with dedicated resources and full
-            control
-          </p>
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">High-performance VPS hosting with dedicated resources and full control</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto px-4 sm:px-0">
             <StatCard icon={Terminal} label="Root Access" value="Full" />
             <StatCard icon={Server} label="Deployment" value="Instant" />

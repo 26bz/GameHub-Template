@@ -1,58 +1,57 @@
-import { useState, useEffect } from "react";
-import { Search, Server, ChevronDown, Star, Globe } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Search, Server, ChevronDown, Star, Globe } from 'lucide-react';
 import { Helmet } from 'react-helmet';
 
 const SAMPLE_GAMES = [
   {
     id: 1,
-    title: "Minecraft",
-    image: "/images/minecraft.jpg",
-    category: "Survival",
-    players: "1-100+",
+    title: 'Minecraft',
+    image: '/images/minecraft.jpg',
+    category: 'Survival',
+    players: '1-100+',
     price: 4.99,
-    specs: "4GB RAM",
-    description: "Build, explore, and survive in this iconic sandbox game.",
-    popularity: "High",
-    features: ["One-Click Install", "Mod Support", "24/7 Backups"],
+    specs: '4GB RAM',
+    description: 'Build, explore, and survive in this iconic sandbox game.',
+    popularity: 'High',
+    features: ['One-Click Install', 'Mod Support', '24/7 Backups'],
     rating: 4.8,
-    activeServers: "5,000+",
-    badge: "MOST POPULAR",
-    promoTag: "Free Domain Included",
-    slug: "minecraft",
+    activeServers: '5,000+',
+    badge: 'MOST POPULAR',
+    promoTag: 'Free Domain Included',
+    slug: 'minecraft',
   },
   {
     id: 2,
-    title: "Valheim",
-    image: "/images/valheim.jpg",
-    category: "Adventure",
-    players: "1-10",
+    title: 'Valheim',
+    image: '/images/valheim.jpg',
+    category: 'Adventure',
+    players: '1-10',
     price: 5.99,
-    specs: "4GB RAM",
-    description: "Viking survival game in a procedurally-generated world.",
-    popularity: "Medium",
-    features: ["Custom Config", "World Backup", "Plugin Support"],
+    specs: '4GB RAM',
+    description: 'Viking survival game in a procedurally-generated world.',
+    popularity: 'Medium',
+    features: ['Custom Config', 'World Backup', 'Plugin Support'],
     rating: 4.6,
-    activeServers: "1,200+",
-    promoTag: "20% Off",
-    slug: "valheim",
+    activeServers: '1,200+',
+    promoTag: '20% Off',
+    slug: 'valheim',
   },
   {
     id: 3,
-    title: "ARK",
-    image: "/images/ark-se.avif",
-    category: "Survival",
-    players: "1-70",
+    title: 'ARK',
+    image: '/images/ark-se.avif',
+    category: 'Survival',
+    players: '1-70',
     price: 7.99,
-    specs: "12GB RAM",
-    description:
-      "Survive in a world filled with dinosaurs and prehistoric creatures.",
-    popularity: "High",
-    features: ["Anti-DDoS", "Mod Manager", "Auto-Updates"],
+    specs: '12GB RAM',
+    description: 'Survive in a world filled with dinosaurs and prehistoric creatures.',
+    popularity: 'High',
+    features: ['Anti-DDoS', 'Mod Manager', 'Auto-Updates'],
     rating: 4.7,
-    activeServers: "3,000+",
-    badge: "NEW",
-    promoTag: "Premium Hardware",
-    slug: "ark",
+    activeServers: '3,000+',
+    badge: 'NEW',
+    promoTag: 'Premium Hardware',
+    slug: 'ark',
   },
 ];
 
@@ -83,12 +82,9 @@ const FilterButton = ({ label, options, value, onChange }) => {
         className="flex items-center justify-between w-full bg-gray-800/50 backdrop-blur-sm text-white px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all"
       >
         <span className="text-xs sm:text-sm">
-          {label}: {value || "All"}
+          {label}: {value || 'All'}
         </span>
-        <ChevronDown
-          size={14}
-          className={`ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`}
-        />
+        <ChevronDown size={14} className={`ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
@@ -96,7 +92,7 @@ const FilterButton = ({ label, options, value, onChange }) => {
           <div className="py-1">
             <button
               onClick={() => {
-                onChange("");
+                onChange('');
                 setIsOpen(false);
               }}
               className="block w-full text-left px-4 py-2 text-xs sm:text-sm text-gray-300 hover:bg-blue-500/20 transition-colors"
@@ -125,44 +121,26 @@ const FilterButton = ({ label, options, value, onChange }) => {
 const GameCard = ({ game }) => (
   <div className="group bg-gradient-to-br from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-2xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 overflow-hidden">
     <div className="relative">
-      <img
-        src={game.image}
-        alt={game.title}
-        className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-      />
+      <img src={game.image} alt={game.title} className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
       {game.badge && (
-        <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium animate-pulse">
-          {game.badge}
-        </div>
+        <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium animate-pulse">{game.badge}</div>
       )}
-      {game.promoTag && (
-        <div className="absolute top-4 left-4 bg-green-500 text-black px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-semibold">
-          {game.promoTag}
-        </div>
-      )}
+      {game.promoTag && <div className="absolute top-4 left-4 bg-green-500 text-black px-2 sm:px-3 py-1 rounded-lg text-xs sm:text-sm font-semibold">{game.promoTag}</div>}
     </div>
 
     <div className="p-4 sm:p-6">
       <div className="flex items-center justify-between mb-2 sm:mb-3">
-        <h3 className="text-xl sm:text-2xl font-bold text-white">
-          {game.title}
-        </h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-white">{game.title}</h3>
         <div className="flex items-center bg-gray-800 rounded-full px-2 sm:px-3 py-1">
           <Star size={14} className="text-yellow-400 fill-yellow-400 mr-1" />
           <span className="text-white font-medium text-sm">{game.rating}</span>
         </div>
       </div>
 
-      <p className="text-gray-300 mb-4 text-sm sm:text-base">
-        {game.description}
-      </p>
+      <p className="text-gray-300 mb-4 text-sm sm:text-base">{game.description}</p>
 
       <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-4">
-        <StatCard
-          icon={Server}
-          label="Active Servers"
-          value={game.activeServers}
-        />
+        <StatCard icon={Server} label="Active Servers" value={game.activeServers} />
         <StatCard icon={Globe} label="Global Locations" value="15+ Regions" />
       </div>
 
@@ -177,9 +155,7 @@ const GameCard = ({ game }) => (
           <div className="text-gray-400 text-xs sm:text-sm">Starting at</div>
           <div className="text-xl sm:text-2xl font-bold text-white">
             ${game.price}
-            <span className="text-gray-400 text-xs sm:text-sm font-normal">
-              /month
-            </span>
+            <span className="text-gray-400 text-xs sm:text-sm font-normal">/month</span>
           </div>
         </div>
         <a
@@ -195,20 +171,16 @@ const GameCard = ({ game }) => (
 );
 
 export default function GamesPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [categoryFilter, setCategoryFilter] = useState("");
-  const [popularityFilter, setPopularityFilter] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [popularityFilter, setPopularityFilter] = useState('');
   const [filteredGames, setFilteredGames] = useState(SAMPLE_GAMES);
 
   useEffect(() => {
     let results = SAMPLE_GAMES;
 
     if (searchQuery) {
-      results = results.filter(
-        (game) =>
-          game.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          game.description.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      results = results.filter((game) => game.title.toLowerCase().includes(searchQuery.toLowerCase()) || game.description.toLowerCase().includes(searchQuery.toLowerCase()));
     }
     if (categoryFilter) {
       results = results.filter((game) => game.category === categoryFilter);
@@ -224,10 +196,7 @@ export default function GamesPage() {
     <section className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
       <Helmet>
         <title>Game Servers | GameHub</title>
-        <meta
-          name="description"
-          content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting."
-        />
+        <meta name="description" content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting." />
       </Helmet>
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
@@ -239,19 +208,14 @@ export default function GamesPage() {
           <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-clip-text py-2 sm:py-3 text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-3 sm:mb-4">
             Premium Game Servers
           </h2>
-          <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
-            Deploy your game server in seconds with enterprise-grade hardware
-          </p>
+          <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">Deploy your game server in seconds with enterprise-grade hardware</p>
         </div>
 
         <div className="mb-8 sm:mb-12">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-grow">
               <div className="relative">
-                <Search
-                  size={20}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400"
-                />
+                <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-400" />
                 <input
                   type="text"
                   placeholder="Search games..."
@@ -263,18 +227,8 @@ export default function GamesPage() {
             </div>
 
             <div className="flex gap-4">
-              <FilterButton
-                label="Category"
-                options={["Survival", "Adventure", "FPS"]}
-                value={categoryFilter}
-                onChange={setCategoryFilter}
-              />
-              <FilterButton
-                label="Popularity"
-                options={["High", "Medium", "Low"]}
-                value={popularityFilter}
-                onChange={setPopularityFilter}
-              />
+              <FilterButton label="Category" options={['Survival', 'Adventure', 'FPS']} value={categoryFilter} onChange={setCategoryFilter} />
+              <FilterButton label="Popularity" options={['High', 'Medium', 'Low']} value={popularityFilter} onChange={setPopularityFilter} />
             </div>
           </div>
         </div>
@@ -287,14 +241,12 @@ export default function GamesPage() {
 
         {filteredGames.length === 0 && (
           <div className="text-center py-8 sm:py-12 bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50">
-            <p className="text-gray-300 text-lg sm:text-xl mb-3 sm:mb-4">
-              No games found matching your criteria
-            </p>
+            <p className="text-gray-300 text-lg sm:text-xl mb-3 sm:mb-4">No games found matching your criteria</p>
             <button
               onClick={() => {
-                setSearchQuery("");
-                setCategoryFilter("");
-                setPopularityFilter("");
+                setSearchQuery('');
+                setCategoryFilter('');
+                setPopularityFilter('');
               }}
               className="text-blue-400 hover:text-blue-300 transition-colors font-medium text-sm sm:text-base"
             >

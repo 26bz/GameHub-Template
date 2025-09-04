@@ -1,20 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  Menu,
-  X,
-  ChevronDown,
-  ChevronRight,
-  User,
-  Gamepad,
-  Shield,
-  Headphones,
-  HandHelpingIcon,
-  Phone,
-  BookOpen,
-  Layout,
-  Activity,
-} from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown, ChevronRight, User, Gamepad, Shield, Headphones, HandHelpingIcon, Phone, BookOpen, Layout, Activity } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,48 +12,48 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     }
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Home", href: "/" },
+    { name: 'Home', href: '/' },
     {
-      name: "Top Games",
-      href: "/games",
+      name: 'Top Games',
+      href: '/games',
       icon: Gamepad,
-      dropdown: [{ name: "Minecraft", href: "/minecraft" }],
+      dropdown: [{ name: 'Minecraft', href: '/minecraft' }],
     },
     {
-      name: "Services",
-      href: "#",
+      name: 'Services',
+      href: '#',
       icon: Shield,
       dropdown: [
-        { name: "Game Hosting", href: "/games" },
-        { name: "Web Hosting", href: "/webhosting" },
-        { name: "VPS Services", href: "/vps" },
+        { name: 'Game Hosting', href: '/games' },
+        { name: 'Web Hosting', href: '/webhosting' },
+        { name: 'VPS Services', href: '/vps' },
       ],
     },
-    { name: "Partners", href: "/partners", icon: HandHelpingIcon },
-    { name: "Ticket Support", href: "/example", icon: Headphones },
+    { name: 'Partners', href: '/partners', icon: HandHelpingIcon },
+    { name: 'Ticket Support', href: '/example', icon: Headphones },
   ];
 
   const quickLinks = [
-    { name: "Knowledgebase", href: "/knowledgebase", icon: BookOpen },
-    { name: "cPanel Login", href: "/cpanel", icon: Layout },
-    { name: "Status Page", href: "/status", icon: Activity },
-    { name: "Game Panel", href: "/game-panel", icon: Gamepad },
+    { name: 'Knowledgebase', href: '/knowledgebase', icon: BookOpen },
+    { name: 'cPanel Login', href: '/cpanel', icon: Layout },
+    { name: 'Status Page', href: '/status', icon: Activity },
+    { name: 'Game Panel', href: '/game-panel', icon: Gamepad },
   ];
 
   const handleNavigation = (path) => {
@@ -79,38 +65,21 @@ export default function Navbar() {
   return (
     <>
       {/* Overlay for mobile menu */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/80 z-40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
+      {isOpen && <div className="fixed inset-0 bg-black/80 z-40 md:hidden" onClick={() => setIsOpen(false)} />}
 
-      <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled
-            ? "bg-gray-900 border-b border-gray-800"
-            : "bg-gray-900 border-b border-gray-800"
-          }`}
-      >
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 border-b border-gray-800' : 'bg-gray-900 border-b border-gray-800'}`}>
         {/* Top Bar */}
         <div className="hidden md:block bg-gray-900 text-gray-300 py-1 border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">
             <div className="flex items-center space-x-4">
-              <a
-                href="tel:+1234567890"
-                className="hover:text-blue-400 transition-colors flex items-center"
-              >
+              <a href="tel:+1234567890" className="hover:text-blue-400 transition-colors flex items-center">
                 <Headphones size={14} className="mr-2" />
                 Support: +1 (234) 567-890
               </a>
             </div>
             <div className="flex items-center space-x-6">
               {quickLinks.map(({ name, href }) => (
-                <Link
-                  key={name}
-                  to={href}
-                  className="hover:text-blue-400 transition-colors text-sm font-medium"
-                >
+                <Link key={name} to={href} className="hover:text-blue-400 transition-colors text-sm font-medium">
                   {name}
                 </Link>
               ))}
@@ -123,14 +92,8 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <Link to="/" className="flex items-center space-x-2">
-                <img
-                  src="https://placehold.co/50"
-                  className="w-10 h-auto"
-                  alt="Logo"
-                />
-                <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-                  GameHub
-                </span>
+                <img src="https://placehold.co/50" className="w-10 h-auto" alt="Logo" />
+                <span className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text">GameHub</span>
               </Link>
             </div>
 
@@ -144,12 +107,7 @@ export default function Navbar() {
                   >
                     {link.icon && <link.icon size={16} />}
                     <span>{link.name}</span>
-                    {link.dropdown && (
-                      <ChevronDown
-                        size={14}
-                        className="transform group-hover:rotate-180 transition-transform duration-200"
-                      />
-                    )}
+                    {link.dropdown && <ChevronDown size={14} className="transform group-hover:rotate-180 transition-transform duration-200" />}
                   </button>
 
                   {link.dropdown && (
@@ -180,10 +138,7 @@ export default function Navbar() {
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg 
                            transition-all hover:scale-105 font-medium flex items-center group"
                 >
-                  <User
-                    size={16}
-                    className="mr-2 transform transition-transform group-hover:scale-110"
-                  />
+                  <User size={16} className="mr-2 transform transition-transform group-hover:scale-110" />
                   Client Area
                 </a>
               </div>
@@ -191,10 +146,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all"
-              >
+              <button onClick={() => setIsOpen(!isOpen)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
@@ -202,8 +154,7 @@ export default function Navbar() {
 
           {/* Mobile Navigation Menu */}
           <div
-            className={`fixed inset-y-0 right-0 w-full sm:max-w-sm bg-gray-900 shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${isOpen ? "translate-x-0" : "translate-x-full"
-              }`}
+            className={`fixed inset-y-0 right-0 w-full sm:max-w-sm bg-gray-900 shadow-2xl transition-transform duration-300 ease-in-out md:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
             style={{
               top: 0,
               bottom: 0,
@@ -213,10 +164,7 @@ export default function Navbar() {
             {/* Mobile Menu Header */}
             <div className="sticky top-0 flex items-center justify-between p-4 bg-gray-900 border-b border-gray-800">
               <span className="text-xl font-bold text-white">Menu</span>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all"
-              >
+              <button onClick={() => setIsOpen(false)} className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-all">
                 <X size={24} />
               </button>
             </div>
@@ -225,10 +173,7 @@ export default function Navbar() {
             <div className="overflow-y-auto h-[calc(100vh-4rem)]">
               {/* Quick Contact */}
               <div className="p-4 bg-gray-800">
-                <a
-                  href="tel:+1234567890"
-                  className="flex items-center space-x-3 text-gray-300 hover:text-white"
-                >
+                <a href="tel:+1234567890" className="flex items-center space-x-3 text-gray-300 hover:text-white">
                   <Phone size={20} />
                   <span className="font-medium">+1 (234) 567-890</span>
                 </a>
@@ -242,31 +187,17 @@ export default function Navbar() {
                       className="w-full text-left px-3 py-2.5 text-gray-100 hover:text-white hover:bg-gray-800 rounded-lg transition-all flex items-center justify-between"
                       onClick={() => {
                         if (link.dropdown) {
-                          setMobileActiveDropdown(
-                            mobileActiveDropdown === link.name
-                              ? null
-                              : link.name
-                          );
+                          setMobileActiveDropdown(mobileActiveDropdown === link.name ? null : link.name);
                         } else {
                           handleNavigation(link.href);
                         }
                       }}
                     >
                       <span className="flex items-center space-x-3">
-                        {link.icon && (
-                          <link.icon size={20} className="text-blue-400" />
-                        )}
+                        {link.icon && <link.icon size={20} className="text-blue-400" />}
                         <span className="font-medium">{link.name}</span>
                       </span>
-                      {link.dropdown && (
-                        <ChevronRight
-                          size={20}
-                          className={`transform transition-transform duration-200 ${mobileActiveDropdown === link.name
-                              ? "rotate-90"
-                              : ""
-                            }`}
-                        />
-                      )}
+                      {link.dropdown && <ChevronRight size={20} className={`transform transition-transform duration-200 ${mobileActiveDropdown === link.name ? 'rotate-90' : ''}`} />}
                     </button>
 
                     {link.dropdown && mobileActiveDropdown === link.name && (
@@ -288,9 +219,7 @@ export default function Navbar() {
 
               {/* Quick Links Section */}
               <div className="p-3 bg-gray-800/50">
-                <h3 className="text-xs font-semibold text-gray-400 mb-2 px-3 uppercase tracking-wider">
-                  Quick Links
-                </h3>
+                <h3 className="text-xs font-semibold text-gray-400 mb-2 px-3 uppercase tracking-wider">Quick Links</h3>
                 <div className="space-y-1">
                   {quickLinks.map((link) => (
                     <button

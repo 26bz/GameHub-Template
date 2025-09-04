@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   :root {
@@ -22,9 +22,7 @@
 .page-transition-enter-active {
   opacity: 1;
   transform: translateY(0);
-  transition:
-    opacity 300ms,
-    transform 300ms;
+  transition: opacity 300ms, transform 300ms;
 }
 
 .page-transition-exit {
@@ -35,9 +33,7 @@
 .page-transition-exit-active {
   opacity: 0;
   transform: translateY(-20px);
-  transition:
-    opacity 300ms,
-    transform 300ms;
+  transition: opacity 300ms, transform 300ms;
 }
 
 /* Print styles for legal pages */
@@ -53,8 +49,8 @@
   .bg-gradient-to-t,
   .bg-blue-500\/10,
   .bg-purple-500\/10,
-  nav[aria-label="Table of contents"],
-  [aria-label="Back to top"] {
+  nav[aria-label='Table of contents'],
+  [aria-label='Back to top'] {
     display: none !important;
   }
 
@@ -95,7 +91,7 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
-/*! Template: GameHub - Hosting Company Template | Resource ID: 53667 | Version: v1.6 (213020) | Downloaded by: 26bz (User ID: 473255) | Download Time: 1756961564 | Platform Verified: true | Unique Trace ID: 3d3358e55ead3af04c2ec61c092f09dc | Copyright @26bz https://26bz.online | Redistribution results in takedowns */
+  /*! Template: GameHub - Hosting Company Template | Resource ID: 53667 | Version: v1.6 (213020) | Downloaded by: 26bz (User ID: 473255) | Download Time: 1756961564 | Platform Verified: true | Unique Trace ID: 3d3358e55ead3af04c2ec61c092f09dc | Copyright @26bz https://26bz.online | Redistribution results in takedowns */
   .max-w-7xl {
     max-width: none !important;
     margin: 0 auto !important;

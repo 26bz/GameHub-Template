@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import LegalPage from "./LegalPage";
-import policiesData from "../components/policies.json";
+import { useEffect, useState } from 'react';
+import LegalPage from './LegalPage';
+import policiesData from '../components/policies.json';
 import { Helmet } from 'react-helmet';
 const GDPRCompliance = () => {
   const [gdprData, setGdprData] = useState({});
@@ -13,10 +13,7 @@ const GDPRCompliance = () => {
     <>
       <Helmet>
         <title>GDPR Compliance | GameHub</title>
-        <meta
-          name="description"
-          content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting."
-        />
+        <meta name="description" content="Deploy a Minecraft server in seconds with MyApp's enterprise-grade hosting." />
       </Helmet>
       <LegalPage
         title="General Data Protection Regulation (GDPR) Compliance"
@@ -24,8 +21,8 @@ const GDPRCompliance = () => {
         sections={
           gdprData.sections || [
             {
-              title: "Content Unavailable",
-              content: "Content is not available.",
+              title: 'Content Unavailable',
+              content: 'Content is not available.',
             },
           ]
         }

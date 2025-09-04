@@ -1,16 +1,14 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
 
 // Import the HeroSection directly (without lazy loading)
-import HeroSection from "../components/HeroSection";
+import HeroSection from '../components/HeroSection';
 
 // Lazy load other components
-const InfrastructureSection = lazy(
-  () => import("../components/Infrastructure")
-);
-const GameSolutions = lazy(() => import("../components/GameSolutions"));
-const GlobalLocations = lazy(() => import("../components/GlobalLocations"));
-const EnterpriseSupport = lazy(() => import("../components/EnterpriseSupport"));
+const InfrastructureSection = lazy(() => import('../components/Infrastructure'));
+const GameSolutions = lazy(() => import('../components/GameSolutions'));
+const GlobalLocations = lazy(() => import('../components/GlobalLocations'));
+const EnterpriseSupport = lazy(() => import('../components/EnterpriseSupport'));
 
 // Loading component for better UX
 const LoadingFallback = () => (
@@ -24,10 +22,7 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Home | GameHub</title>
-        <meta
-          name="description"
-          content="Deploy a Minecraft server in seconds with GameHub's enterprise-grade hosting."
-        />
+        <meta name="description" content="Deploy a Minecraft server in seconds with GameHub's enterprise-grade hosting." />
       </Helmet>
       {/* Renders the HeroSection immediately */}
       <HeroSection />

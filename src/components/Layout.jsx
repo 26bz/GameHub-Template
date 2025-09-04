@@ -1,6 +1,6 @@
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import { BackToTop } from "./shared-components";
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { BackToTop } from './shared-components';
 
 export default function Layout({ children }) {
   return (

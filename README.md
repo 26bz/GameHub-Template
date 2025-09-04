@@ -45,12 +45,14 @@ Edit the files in the `src` directory to customize your site. The development se
 The `public` folder contains static assets that are served directly:
 
 1. **Icons and Favicons**
+
    - `favicon.ico` - Main favicon
    - `apple-touch-icon.png` - Icon for iOS devices
    - `pwa-192x192.png` and `pwa-512x512.png` - PWA icons
    - `masked-icon.svg` - Safari pinned tab icon
 
 2. **Game Images** (in `public/images/`)
+
    - Add game images here (supported formats: jpg, png, avif)
    - Use compressed formats like .avif for better performance
    - Recommended size: 800x600 or 16:9 ratio

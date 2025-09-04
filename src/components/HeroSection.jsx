@@ -1,14 +1,5 @@
-import { useState, useEffect } from "react";
-import {
-  Server,
-  Shield,
-  Users,
-  Database,
-  Globe,
-  Cpu,
-  ArrowRight,
-  Gamepad,
-} from "lucide-react";
+import { useState, useEffect } from 'react';
+import { Server, Shield, Users, Database, Globe, Cpu, ArrowRight, Gamepad } from 'lucide-react';
 
 const AnimatedValue = ({ value, duration = 2000, decimals = 0 }) => {
   const [count, setCount] = useState(0);
@@ -32,18 +23,10 @@ const AnimatedValue = ({ value, duration = 2000, decimals = 0 }) => {
     return () => clearInterval(timer);
   }, [value, duration]);
 
-  return decimals === 0
-    ? Math.floor(count).toLocaleString()
-    : count.toFixed(decimals);
+  return decimals === 0 ? Math.floor(count).toLocaleString() : count.toFixed(decimals);
 };
 
-const StatsCard = ({
-  icon: Icon,
-  value,
-  label,
-  suffix = "+",
-  decimals = 0,
-}) => (
+const StatsCard = ({ icon: Icon, value, label, suffix = '+', decimals = 0 }) => (
   <div className="relative bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 group">
     {/* Hover Gradient */}
     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl" />
@@ -95,7 +78,7 @@ export default function HeroSection() {
           className="absolute inset-0"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgb(59 130 246 / 0.15) 1px, transparent 0)`,
-            backgroundSize: "32px 32px",
+            backgroundSize: '32px 32px',
           }}
         />
 
@@ -108,14 +91,10 @@ export default function HeroSection() {
         {/* Badge */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center bg-gradient-to-r from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-full p-1 pr-4 backdrop-blur-sm border border-gray-700/50 group hover:border-blue-500/50 transition-all duration-300">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-3 py-1 text-sm font-medium text-white mr-2">
-              New
-            </span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-full px-3 py-1 text-sm font-medium text-white mr-2">New</span>
             <div className="flex items-center space-x-2">
               <Gamepad size={16} className="text-blue-400" />
-              <span className="text-gray-300 text-sm">
-                Next-Gen Game Hosting Platform
-              </span>
+              <span className="text-gray-300 text-sm">Next-Gen Game Hosting Platform</span>
             </div>
           </div>
         </div>
@@ -126,8 +105,7 @@ export default function HeroSection() {
             Level Up Your Gaming Experience
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-medium leading-relaxed">
-            Deploy high-performance game servers with enterprise-grade hardware
-            and instant setup in just a few clicks
+            Deploy high-performance game servers with enterprise-grade hardware and instant setup in just a few clicks
           </p>
 
           {/* CTA Buttons */}
@@ -138,20 +116,14 @@ export default function HeroSection() {
             >
               <Gamepad size={20} className="mr-2" />
               Deploy Game Server
-              <ArrowRight
-                size={16}
-                className="ml-2 transform transition-transform group-hover:translate-x-1"
-              />
+              <ArrowRight size={16} className="ml-2 transform transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="example.com"
               className="group bg-gray-800/50 hover:bg-gray-800 text-white px-8 py-4 rounded-xl transition-all hover:scale-105 duration-300 font-medium backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 flex items-center"
             >
               Contact Us
-              <ArrowRight
-                size={16}
-                className="ml-2 transform transition-transform group-hover:translate-x-1"
-              />
+              <ArrowRight size={16} className="ml-2 transform transition-transform group-hover:translate-x-1" />
             </a>
           </div>
         </div>
@@ -160,38 +132,15 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-12 md:mb-16 px-4 sm:px-0">
           <StatsCard icon={Server} value={500} label="Active Servers" />
           <StatsCard icon={Globe} value={15} label="Global Locations" />
-          <StatsCard
-            icon={Shield}
-            value={2.5}
-            label="Tbps Protection"
-            decimals={1}
-          />
-          <StatsCard
-            icon={Database}
-            value={99.9}
-            label="Uptime %"
-            decimals={1}
-            suffix="%"
-          />
+          <StatsCard icon={Shield} value={2.5} label="Tbps Protection" decimals={1} />
+          <StatsCard icon={Database} value={99.9} label="Uptime %" decimals={1} suffix="%" />
         </div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 px-4 sm:px-0">
-          <FeatureCard
-            icon={Cpu}
-            title="Instant Deployment"
-            description="Get your server running in under 60 seconds with our automated setup system and intuitive control panel."
-          />
-          <FeatureCard
-            icon={Shield}
-            title="Enterprise Security"
-            description="Stay protected with multi-layered DDoS protection and automated threat mitigation systems."
-          />
-          <FeatureCard
-            icon={Users}
-            title="24/7 Expert Support"
-            description="Our team of gaming specialists is available around the clock to ensure your servers run smoothly."
-          />
+          <FeatureCard icon={Cpu} title="Instant Deployment" description="Get your server running in under 60 seconds with our automated setup system and intuitive control panel." />
+          <FeatureCard icon={Shield} title="Enterprise Security" description="Stay protected with multi-layered DDoS protection and automated threat mitigation systems." />
+          <FeatureCard icon={Users} title="24/7 Expert Support" description="Our team of gaming specialists is available around the clock to ensure your servers run smoothly." />
         </div>
       </div>
     </section>

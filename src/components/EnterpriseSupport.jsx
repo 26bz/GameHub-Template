@@ -1,26 +1,26 @@
-import { Headset, Rocket, Shield, Clock, Users, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { Headset, Rocket, Shield, Clock, Users, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const features = [
   {
     icon: Shield,
-    title: "Enterprise Security",
-    description: "Advanced DDoS protection and security measures",
+    title: 'Enterprise Security',
+    description: 'Advanced DDoS protection and security measures',
   },
   {
     icon: Clock,
-    title: "24/7 Support",
-    description: "Round-the-clock expert technical assistance",
+    title: '24/7 Support',
+    description: 'Round-the-clock expert technical assistance',
   },
   {
     icon: Users,
-    title: "Dedicated Team",
-    description: "Your personal account management team",
+    title: 'Dedicated Team',
+    description: 'Your personal account management team',
   },
   {
     icon: Star,
-    title: "SLA Guarantee",
-    description: "99.99% uptime guarantee with compensation",
+    title: 'SLA Guarantee',
+    description: '99.99% uptime guarantee with compensation',
   },
 ];
 
@@ -34,9 +34,7 @@ const FeatureCard = ({ feature }) => (
     <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-gradient-to-r mx-auto from-blue-600 to-purple-600 p-2 sm:p-2.5 mb-3 sm:mb-4">
       <feature.icon className="w-full h-full text-white" />
     </div>
-    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
-      {feature.title}
-    </h3>
+    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{feature.title}</h3>
     <p className="text-gray-400 text-sm sm:text-base">{feature.description}</p>
   </motion.div>
 );
@@ -71,11 +69,7 @@ export default function EnterpriseSupport() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header Content */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12 sm:mb-16"
-        >
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
@@ -84,9 +78,7 @@ export default function EnterpriseSupport() {
           >
             <div className="flex items-center space-x-2 px-4 sm:px-6 py-2">
               <Headset size={16} className="text-blue-400" />
-              <span className="text-gray-300 font-medium text-sm sm:text-base">
-                Enterprise-Grade Solutions
-              </span>
+              <span className="text-gray-300 font-medium text-sm sm:text-base">Enterprise-Grade Solutions</span>
             </div>
           </motion.div>
 
