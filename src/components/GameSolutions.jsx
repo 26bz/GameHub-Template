@@ -194,7 +194,7 @@ function GameHostingShowcase() {
               </div>
             </motion.div>
           </AnimatePresence>
-
+          {/*! Template: %%__RESOURCE_TITLE__%% | Resource ID: %%__RESOURCE__%% | Version: %%__VERSION_NUMBER__%% (%%__VERSION__%%) | Downloaded by: %%__USERNAME__%% (User ID: %%__USER__%%) | Download Time: %%__TIMESTAMP__%% | Platform Verified: %%__BUILTBYBIT__%% | Unique Trace ID: %%__NONCE__%% | Copyright @26bz https://26bz.online | Redistribution results in takedowns  */}
           <div className="flex justify-center mt-6 space-x-2">
             {games.map((game, index) => (
               <button

@@ -4,9 +4,9 @@ import { Server } from 'lucide-react';
 const NotFound = () => {
   return (
     <section className="bg-gradient-to-b from-gray-900 via-gray-900 to-black py-16 sm:py-24 relative overflow-hidden">
+      {/*! Template: %%__RESOURCE_TITLE__%% | Resource ID: %%__RESOURCE__%% | Version: %%__VERSION_NUMBER__%% (%%__VERSION__%%) | Downloaded by: %%__USERNAME__%% (User ID: %%__USER__%%) | Download Time: %%__TIMESTAMP__%% | Platform Verified: %%__BUILTBYBIT__%% | Unique Trace ID: %%__NONCE__%% | Copyright @26bz https://26bz.online | Redistribution results in takedowns  */}
       <div className="absolute inset-0 bg-grid-white/[0.05] -z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent" />
-
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="flex flex-col justify-center items-center min-h-[60vh] sm:min-h-[70vh] text-center">
           <div className="inline-block mb-4 sm:mb-6 bg-gradient-to-r from-gray-800/50 via-gray-800/30 to-gray-900/50 rounded-full p-1 backdrop-blur-sm border border-gray-700/50">
