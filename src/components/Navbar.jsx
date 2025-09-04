@@ -4,17 +4,8 @@ import { Menu, X, ChevronDown, ChevronRight, User, Gamepad, Shield, Headphones, 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -67,7 +58,7 @@ export default function Navbar() {
       {/* Overlay for mobile menu */}
       {isOpen && <div className="fixed inset-0 bg-black/80 z-40 md:hidden" onClick={() => setIsOpen(false)} />}
 
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 border-b border-gray-800' : 'bg-gray-900 border-b border-gray-800'}`}>
+      <nav className="fixed w-full top-0 z-50 transition-all duration-300 bg-gray-900 border-b border-gray-800">
         {/* Top Bar */}
         <div className="hidden md:block bg-gray-900 text-gray-300 py-1 border-b border-gray-800">
           <div className="max-w-7xl mx-auto px-4 flex justify-between items-center text-sm">

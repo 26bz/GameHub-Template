@@ -2,18 +2,19 @@ import { Shield, Server, Globe, Users, Star, Database, HardDrive, Cpu, Network, 
 import { StatCard } from '../components/shared-components';
 import { Helmet } from 'react-helmet';
 
-const SpecItem = ({ icon: Icon, spec }) => (
+const IconTextItem = ({ icon: Icon, text, iconColor = "text-blue-400" }) => (
   <div className="text-gray-300 flex items-center py-1 sm:py-1.5 text-sm sm:text-base">
-    <Icon size={14} className="text-blue-400 mr-2 flex-shrink-0" />
-    {spec}
+    <Icon size={14} className={`${iconColor} mr-2 flex-shrink-0`} />
+    {text}
   </div>
 );
 
+const SpecItem = ({ icon, spec }) => (
+  <IconTextItem icon={icon} text={spec} />
+);
+
 const FeatureItem = ({ feature }) => (
-  <div className="text-gray-300 flex items-center py-1 text-sm sm:text-base">
-    <Shield size={14} className="text-green-400 mr-2 flex-shrink-0" />
-    {feature}
-  </div>
+  <IconTextItem icon={Shield} text={feature} iconColor="text-green-400" />
 );
 
 const WebHostingCard = ({ plan }) => (
